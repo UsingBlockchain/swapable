@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "outDir": "./dist/",
+    "declaration": true,
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "files": [
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "include": [
+    "test/*.spec.ts",
+    "test/**/*.spec.ts",
+    "src/*.ts"
+  ]
+}

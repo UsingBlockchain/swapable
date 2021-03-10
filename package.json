@@ -1,0 +1,59 @@
+{
+  "name": "swapable",
+  "version": "1.0.0",
+  "license": "AGPL-3.0",
+  "description": "Swapable: Automated Liquidity Pools",
+  "keywords": [
+    "blockchain",
+    "bitcoin",
+    "cryptocurrency",
+    "market",
+    "liquidity",
+    "pool",
+    "digital assets",
+    "swap"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "rxjs": "^6.6.6",
+    "symbol-hd-wallets": "^0.14.0",
+    "symbol-sdk": "^0.23.2",
+    "symbol-uri-scheme": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^5.2.7",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "chai": "^4.3.3",
+    "eslint": "^6.8.0",
+    "mocha": "^5.2.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^7.0.0",
+    "typedoc": "^0.15.0",
+    "typemoq": "^2.1.0",
+    "typescript": "^3.9.9",
+    "utf8": "3.0.0"
+  },
+  "scripts": {
+    "lint": "eslint src/ --ext .ts && eslint test/ --ext .ts",
+    "lint:fix": "eslint src/ --ext .ts --fix && eslint test/ --ext .ts --fix",
+    "build": "rimraf dist && mkdir dist && tsc",
+    "pretest": "npm run build",
+    "test": "mocha --ui bdd --recursive ./dist/test",
+    "version": "echo $npm_package_version",
+    "docs": "npx typedoc --out \"docs/`npm run version --silent`\" src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usingblockchain/swapable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usingblockchain/swapable/issues"
+  },
+  "homepage": "https://github.com/usingblockchain/swapable#readme"
+}
