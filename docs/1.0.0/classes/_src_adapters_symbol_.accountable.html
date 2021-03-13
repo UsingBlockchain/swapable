@@ -69,6 +69,31 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>class</dt>
+						<dd><p>Accountable</p>
+						</dd>
+						<dt>package</dt>
+						<dd><p>Swapable</p>
+						</dd>
+						<dt>subpackage</dt>
+						<dd><p>Adapters</p>
+						</dd>
+						<dt>since</dt>
+						<dd><p>v1.0.0</p>
+						</dd>
+						<dt>description</dt>
+						<dd><p>Class that describes the blockchain adapter for
+							Symbol from NEM  compatible child accounts.</p>
+						</dd>
+						<dt>link</dt>
+						<dd><p><a href="https://symbolplatform.com">https://symbolplatform.com</a></p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -102,27 +127,55 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/ea69ee3/src/adapters/Symbol.ts#L151">src/adapters/Symbol.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/bec1152/src/adapters/Symbol.ts#L169">src/adapters/Symbol.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Derives a child account from a mnemonic \a seed,
+										and \a derivationPath. By default this method uses
+									the TESTNET network type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>note</dt>
+									<dd><p>This method returns sensitive information.</p>
+									</dd>
+									<dt>static</dt>
+									<dd></dd>
+									<dt>access</dt>
+									<dd><p>public</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>seed: <span class="tsd-signature-type">Buffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The password encrypted mnemonic seed (bip39).</p>
+									</div>
 								</li>
 								<li>
 									<h5>derivationPath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The account derivation path.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> networkType: <span class="tsd-signature-type">NetworkType</span><span class="tsd-signature-symbol"> =&nbsp;NetworkType.TEST_NET</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The account network bits (TESTNET/MAINNET).</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> provider: <a href="_src_adapters_symbol_.signer.html" class="tsd-signature-type">Signer</a><span class="tsd-signature-symbol"> =&nbsp;new Signer()</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The signature provider implementation type.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Account</span></h4>
+							<p>The child account. The returned information shall be secured.</p>
 						</li>
 					</ul>
 				</section>
