@@ -38,5 +38,5 @@ import * as Symbol from './src/adapters/Symbol';
 export { Symbol }
 
 // export open standard namespace `Swapable`
-import * as Swapable from './src/standards/Swapable'
+import * as Swapable from './src/Swapable'
 export { Swapable }

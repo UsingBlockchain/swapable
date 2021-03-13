@@ -8,18 +8,17 @@
  */
 
 import { TransactionURI } from 'symbol-uri-scheme'
+import { MnemonicPassPhrase } from 'symbol-hd-wallets'
 import {
+  AccountInfo,
   PublicAccount,
   MosaicInfo,
   Transaction,
 } from 'symbol-sdk'
-import {
-  MnemonicPassPhrase,
-  Wallet,
-} from 'symbol-hd-wallets'
 
 // internal dependencies
-import { Swapable as CommandsImpl } from './Swapable/index'
+import { PoolCommands as CommandsImpl } from './commands/index'
+import { Executable } from './commands/Executable'
 import {
   AllowanceResult,
   AssetAmount,
@@ -31,13 +30,12 @@ import {
   FailureInvalidCommand,
   Market,
   TransactionParameters,
-} from '../../index'
-import { Executable } from './Swapable/commands/Executable'
+} from '../index'
 import {
   Accountable,
   Reader as ReaderImpl,
   Signer as SignerImpl,
-} from '../adapters/Symbol'
+} from './adapters/Symbol'
 
 /**
  * @type Swapable.CommandFn
@@ -69,9 +67,9 @@ type CommandsList = {
  */
 export const AssetCommands: CommandsList = {
   'CreatePool': (c, i): Command => new CommandsImpl.CreatePool(c, i),
-  //XXX AddLiquidity
-  //XXX RemoveLiquidity
-  //XXX SwapCurrency
+  'AddLiquidity': (c, i): Command => new CommandsImpl.AddLiquidity(c, i),
+  'RemoveLiquidity': (c, i): Command => new CommandsImpl.RemoveLiquidity(c, i),
+  'Swap': (c, i): Command => new CommandsImpl.Swap(c, i),
 }
 
 /**
@@ -138,6 +136,14 @@ export class AutomatedPool implements Market {
    *              pool.
    */
   public mosaicInfo: MosaicInfo | undefined
+
+  /**
+   * @access public
+   * @description Account information for the network-wide target
+   *              public account. This variable holds balances of
+   *              reserves under the `mosaics` field.
+   */
+  public reserveInfo: AccountInfo | undefined
 
   /**
    * @description Last automated pool command execution result.
@@ -249,9 +255,13 @@ export class AutomatedPool implements Market {
     // - Prepares synchronization (context and endpoints)
     const context = this.getContext(this.target, new TransactionParameters())
     const mosaicHttp = (context.reader as ReaderImpl).factoryHttp.createMosaicRepository()
+    const accountHttp = (context.reader as ReaderImpl).factoryHttp.createAccountRepository()
 
     // - Reads the information about the automated pool shares mosaic of this automated pool
     this.mosaicInfo = await mosaicHttp.getMosaic(this.identifier.toMosaicId()).toPromise()
+
+    // - Reads the information about the available reserves of this automated pool
+    this.reserveInfo = await accountHttp.getAccountInfo(this.target.address).toPromise()
 
     // - Done synchronizing network information
     return true
@@ -320,6 +330,7 @@ export class AutomatedPool implements Market {
 
     // - Populate the synchronized data
     cmdFn.mosaicInfo = this.mosaicInfo
+    cmdFn.reserveInfo = this.reserveInfo
 
     // - Uses `canExecute` from underlying \a command
     return cmdFn.canExecute(actor, argv)
@@ -355,6 +366,7 @@ export class AutomatedPool implements Market {
 
       // - Populates the synchronized data
       cmdFn.mosaicInfo = this.mosaicInfo
+      cmdFn.reserveInfo = this.reserveInfo
 
       // - Executes the automated pool command
       return cmdFn.execute(actor, argv)
@@ -396,6 +408,7 @@ export class AutomatedPool implements Market {
 
       // - Populates the synchronized data
       cmdFn.mosaicInfo = this.mosaicInfo
+      cmdFn.reserveInfo = this.reserveInfo
 
       // - Executes the automated pool command
       return cmdFn.execute(actor, argv)

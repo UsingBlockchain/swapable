@@ -123,7 +123,8 @@ export class Signer implements KeyProvider {
    * :warning: It is important to never reveal the data
    *           returned by this method, to anyone.
    *
-   * @param {string}    derivationPath
+   * @param   {Buffer}    seed            The password encrypted mnemonic seed (bip39).
+   * @param   {string}    derivationPath  The account derivation path.
    * @return {Buffer}
    */
   public getPrivateKey(
@@ -141,12 +142,29 @@ export class Signer implements KeyProvider {
   /// end-region implements Adapter
 };
 
+/**
+ * @class Accountable
+ * @package Swapable
+ * @subpackage Adapters
+ * @since v1.0.0
+ * @description Class that describes the blockchain adapter for
+ *              Symbol from NEM  compatible child accounts.
+ * @link https://symbolplatform.com
+ */
 export class Accountable {
   /**
-   * 
+   * Derives a child account from a mnemonic \a seed,
+   * and \a derivationPath. By default this method uses
+   * the TESTNET network type.
    *
-   * @param {string}    derivationPath
-   * @return {Buffer}
+   * @note This method returns sensitive information.
+   * @static
+   * @access public
+   * @param   {Buffer}      seed            The password encrypted mnemonic seed (bip39).
+   * @param   {string}      derivationPath  The account derivation path.
+   * @param   {NetworkType} networkType     The account network bits (TESTNET/MAINNET).
+   * @param   {Signer}      provider        The signature provider implementation type.
+   * @return  {Account}     The child account. The returned information shall be secured.
    */
   public static derive(
     seed: Buffer,

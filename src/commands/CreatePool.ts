@@ -33,12 +33,13 @@ import {
 import {
   AllowanceResult,
   AssetAmount,
+  AssetIdentifier,
   CommandOption,
   Symbol,
-} from '../../../../index'
-import { AssetIdentifier } from '../../../models/AssetIdentifier'
+} from '../../index'
 import { Executable } from './Executable'
 
+//XXX remove this, used only for type-discovery in command options below.
 const Symbol_Testnet_SWP = new AssetIdentifier('00000001', new PublicAccount())
 const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
 
@@ -55,8 +56,8 @@ const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
  * | Argument | Description | Example |
  * | --- | --- | --- |
  * | provider | Liquidity provider | `new PublicAccount(...)` |
- * | input_x | Input X token (first in pair) | `new MosaicId(...)` |
- * | input_y | Input Y token (second in pair) | `new MosaicId(...)` |
+ * | input_x | Amount and asset identifier of `x` (first in pair) | `new AssetAmount(...)` |
+ * | input_y | Amount and asset identifier of `y` (second in pair) | `new AssetAmount(...)` |
  *
  * The execution of this command results in the creation of
  * the following list of transactions with their respective
@@ -74,6 +75,7 @@ const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
  * | 08 | TransferTransaction | Target Account | Transfers the initially created supply of automated pool shares to the liquidity provider. |
  * | 09 | TransferTransaction | Provider Account | Transfers the initially **added liquidity** of `x` and `y` to the target account. |
  * | 10 | TransferTransaction | Provider Account | Adds an execution proof message sent to the **target** account. |
+ *
  */
 export class CreatePool extends Executable {
   /**
@@ -164,32 +166,19 @@ export class CreatePool extends Executable {
     const reader = this.context.reader as Symbol.Reader
     const identifier = this.identifier.id
 
-    // read external arguments
+    // - Read external arguments
     const provider = this.context.getInput('provider', new PublicAccount())
     const input_x = this.context.getInput('input_x', new AssetAmount(Symbol_Testnet_SWP, 10))
     const input_y = this.context.getInput('input_y', new AssetAmount(Symbol_Testnet_XYM, 10))
 
-    //XXX check if pool exists: SWP+XYM:LP
-
-    // constant product formula
-    //XXX if (pool_exists)
-    //XXX   rootK = Math.sqrt(reserve0 * reserve1)
-    //XXX   rootKLast = Math.sqrt(kLast)
-    //XXX   if (rootK > rootKLast)
-    //XXX     numerator = totalSupply.mul(rootK.sub(rootKLast));
-    //XXX     denominator = rootK.mul(5).add(rootKLast);
-    //XXX     liquidity = numerator / denominator;
-    //XXX     if (liquidity > 0) _mint(feeTo, liquidity);
-    //XXX else kLast = 0
-
-
+    // - The amount of shares sent is equal to sqrt(x * y) with 6 decimals
     const shares = 1_000_000 * Math.sqrt(input_x.amount * input_y.amount);
 
-    // prepare output
+    // - Prepares the response
     const transactions: InnerTransaction[] = []
     const signers: PublicAccount[] = []
 
-    // Transaction 01: AccountMetadataTransaction
+    // - Transaction 01: AccountMetadataTransaction
     transactions.push(AccountMetadataTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
@@ -200,10 +189,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 01 is issued by **target** account
+    // - Transaction 01 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 02: MosaicDefinitionTransaction
+    // - Transaction 02: MosaicDefinitionTransaction
     const mosaicNonce = MosaicNonce.createFromHex(identifier)
     const mosaicId = MosaicId.createFromNonce(mosaicNonce, target.address)
     transactions.push(MosaicDefinitionTransaction.create(
@@ -217,24 +206,23 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 02 is issued by **target** account
+    // - Transaction 02 is issued by **target** account
     signers.push(this.target)
 
-    //XXX define total supply of LP shares => sqrt(x * y)
-    // Transaction 03: MosaicSupplyChangeTransaction
+    // - Transaction 03: MosaicSupplyChangeTransaction
     transactions.push(MosaicSupplyChangeTransaction.create(
       this.context.parameters.deadline,
       mosaicId,
       MosaicSupplyChangeAction.Increase,
-      UInt64.fromUint(shares), // XXX sqrt(x * y)
+      UInt64.fromUint(shares),
       reader.networkType,
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 03 is issued by **target** account
+    // - Transaction 03 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 04: MosaicMetadataTransaction attaching `Pool_Id`
+    // - Transaction 04: MosaicMetadataTransaction attaching `Pool_Id`
     transactions.push(MosaicMetadataTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
@@ -246,14 +234,14 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 04 is issued by **target** account
+    // - Transaction 04 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 05: MosaicMetadataTransaction attaching `x_id`
+    // - Transaction 05: MosaicMetadataTransaction attaching `X_Id`
     transactions.push(MosaicMetadataTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
-      KeyGenerator.generateUInt64Key('x_id'),
+      KeyGenerator.generateUInt64Key('X_Id'),
       mosaicId,
       input_x.identifier.id.length,
       input_x.identifier.id,
@@ -261,14 +249,14 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 05 is issued by **target** account
+    // - Transaction 05 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 06: MosaicMetadataTransaction attaching `y_id`
+    // - Transaction 06: MosaicMetadataTransaction attaching `Y_Id`
     transactions.push(MosaicMetadataTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
-      KeyGenerator.generateUInt64Key('y_id'),
+      KeyGenerator.generateUInt64Key('Y_Id'),
       mosaicId,
       input_y.identifier.id.length,
       input_y.identifier.id,
@@ -276,10 +264,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 06 is issued by **target** account
+    // - Transaction 06 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 07: AccountMosaicRestrictionTransaction with MosaicId = [mosaicId, feeMosaicId, x, y]
+    // - Transaction 07: AccountMosaicRestrictionTransaction with MosaicId = [mosaicId, feeMosaicId, x, y]
     // :warning: This transaction **restricts** the account to accept only the listed mosaics. Transfers
     // to this account, that hold any other mosaic(s) will not be accepted by the network anymore.
     transactions.push(AccountMosaicRestrictionTransaction.create(
@@ -296,10 +284,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 07 is issued by **target** account
+    // - Transaction 07 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 08: Transfers initially issued automated pool shares to liquidity provider
+    // - Transaction 08: Transfers initially issued automated pool shares to liquidity provider
     transactions.push(TransferTransaction.create(
       this.context.parameters.deadline,
       provider.address,
@@ -314,10 +302,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 08 is issued by **target** account
+    // - Transaction 08 is issued by **target** account
     signers.push(this.target)
 
-    // Transaction 09: Transfers initially added liquidity to target account
+    // - Transaction 09: Transfers initially added liquidity to target account
     transactions.push(TransferTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
@@ -336,10 +324,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 09 is issued by **provider** account
+    // - Transaction 09 is issued by **provider** account
     signers.push(provider)
 
-    // Transaction 10: Add execution proof transaction
+    // - Transaction 10: Add execution proof transaction
     transactions.push(TransferTransaction.create(
       this.context.parameters.deadline,
       this.target.address,
@@ -352,10 +340,10 @@ export class CreatePool extends Executable {
       undefined, // maxFee 0 for inner
     ))
 
-    // Transaction 10 is issued by **provider** account ("the actor")
+    // - Transaction 10 is issued by **provider** account ("the actor")
     signers.push(provider)
 
-    // return transactions issued by assigned signer
+    // - Assigns correct signer to each transaction
     return transactions.map(
       (transaction, i) => transaction.toAggregate(signers[i])
     )

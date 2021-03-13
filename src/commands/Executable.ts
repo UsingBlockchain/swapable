@@ -9,6 +9,7 @@
 
 import { TransactionURI } from 'symbol-uri-scheme'
 import {
+  AccountInfo,
   AggregateTransaction,
   MosaicInfo,
   PublicAccount,
@@ -24,8 +25,8 @@ import {
   CommandOption,
   Context,
   Symbol,
-} from '../../../../index'
-import { FailureEmptyContract } from '../../../errors/FailureEmptyContract'
+} from '../../index'
+import { FailureEmptyContract } from '../errors/FailureEmptyContract'
 
 /**
  * @abstract
@@ -61,6 +62,14 @@ export abstract class Executable extends BaseCommand {
    *              pool.
    */
   public mosaicInfo: MosaicInfo | undefined
+
+  /**
+   * @access public
+   * @description Account information for the network-wide target
+   *              public account. This variable holds balances of
+   *              reserves under the `mosaics` field.
+   */
+  public reserveInfo: AccountInfo | undefined
 
   /**
    * Construct an executable command object around \a context
@@ -218,5 +227,35 @@ export abstract class Executable extends BaseCommand {
       [], // "unsigned"
       this.context.parameters.maxFee,
     )
+  }
+
+  /**
+   * Returns the available **reserve** of asset \a r. This method
+   * is used internally to determine the available balance in the
+   * automated pool and calculate the liquidity shares ratio.
+   *
+   * @access protected
+   * @param   {AssetIdentifier}   r   The asset identifier (i.e. for which to check reserves).
+   * @return  number              The total balance (reserve) available.
+   */
+  protected reserveOf(
+    r: AssetIdentifier
+  ): number {
+    // - Step out if we don't have the info
+    if (this.reserveInfo === undefined) {
+      return 0 //XXX FailureEmptyReserve
+    }
+
+    // - Reads reserve mosaic balance
+    const reserve = this.reserveInfo?.mosaics.filter(
+      (m) => m.id.id.equals(r.toMosaicId().id)
+    )
+
+    // - Step out if we don't have the info
+    if (! reserve.length) {
+      return 0 //XXX FailureEmptyReserve
+    }
+
+    return reserve[0].amount.compact()
   }
 }
