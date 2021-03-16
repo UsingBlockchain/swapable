@@ -6,7 +6,8 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     AGPL-3.0
  */
-
+import { of } from 'rxjs'
+import { catchError } from 'rxjs/operators'
 import { TransactionURI } from 'symbol-uri-scheme'
 import { MnemonicPassPhrase } from 'symbol-hd-wallets'
 import {
@@ -257,11 +258,21 @@ export class AutomatedPool implements Market {
     const mosaicHttp = (context.reader as ReaderImpl).factoryHttp.createMosaicRepository()
     const accountHttp = (context.reader as ReaderImpl).factoryHttp.createAccountRepository()
 
-    // - Reads the information about the automated pool shares mosaic of this automated pool
-    this.mosaicInfo = await mosaicHttp.getMosaic(this.identifier.toMosaicId()).toPromise()
+    try {
+      // - Reads the information about the automated pool shares mosaic of this automated pool
+      this.mosaicInfo = await mosaicHttp.getMosaic(this.identifier.toMosaicId()).pipe(
+        catchError(e => { console.error(e); return of(undefined) })
+      ).toPromise()
+    }
+    catch (e) {}
 
-    // - Reads the information about the available reserves of this automated pool
-    this.reserveInfo = await accountHttp.getAccountInfo(this.target.address).toPromise()
+    try {
+      // - Reads the information about the available reserves of this automated pool
+      this.reserveInfo = await accountHttp.getAccountInfo(this.target.address).pipe(
+        catchError(e => { console.error(e); return of(undefined) })
+      ).toPromise()
+    }
+    catch (e) {}
 
     // - Done synchronizing network information
     return true
