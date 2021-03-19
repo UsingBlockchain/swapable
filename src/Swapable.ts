@@ -466,6 +466,7 @@ export class AutomatedPool implements Market {
    * @param   {string}         command            The automated pool command name (which command).
    * @param   {Context}        context            The command execution context (arguments).
    * @return  {Command}        The command instance pre-configured with the execution context.
+   * @throws  {FailureInvalidCommand}   On invalid automated pool command.
    */
   protected getCommand(
     sharesAssetId: AssetIdentifier,
@@ -474,7 +475,7 @@ export class AutomatedPool implements Market {
   ): Command {
     // validate digital automated pool command
     if (!AssetCommands || !AssetCommands[command]) {
-      throw new FailureInvalidCommand('Invalid digital automated pool command.')
+      throw new FailureInvalidCommand('Invalid automated pool command.')
     }
 
     return AssetCommands[command](context, sharesAssetId)

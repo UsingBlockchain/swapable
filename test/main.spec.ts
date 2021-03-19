@@ -14,7 +14,10 @@ import {describe, it} from 'mocha'
 import * as Lib from '../index'
 
 describe('main should', () => {
-  it('export DigitalMarket open standard', () => {
+  it('export Swapable.AutomatedPool', () => {
+    expect(Lib.Swapable.AutomatedPool).not.to.be.undefined
+  })
+  it('export Swapable.DigitalMarket', () => {
     expect(Lib.Swapable.DigitalMarket).not.to.be.undefined
   })
 })
