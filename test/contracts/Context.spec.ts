@@ -6,15 +6,14 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     AGPL-3.0
  */
-
+import * as sinon from 'sinon'
 import {expect} from 'chai'
 import {describe, it} from 'mocha'
+import { Deadline, MosaicId } from 'symbol-sdk'
 
 // internal dependencies
-import { getTestAccount } from '../mocks/index'
-import { CommandOption, Context, Symbol } from '../../index'
-import { Deadline, MosaicId } from 'symbol-sdk'
-import { TransactionParameters } from '../../src/models/TransactionParameters'
+import { CommandOption, Context, Symbol, TransactionParameters } from '../../index'
+import { getTestAccount, Stubs } from '../mocks/index'
 
 const context = new Context(
   1,
@@ -74,6 +73,29 @@ describe('contracts/Context --->', () => {
       // assert
       expect(identifier).to.not.be.undefined
       expect(identifier).to.be.equal('id')
+    })
+  })
+
+  describe('factoryHttp should', () => {
+    const stubMosaics = new Stubs.MosaicRepository('http://localhost:3000')
+    const stubAccounts = new Stubs.AccountRepository('http://localhost:3000')
+
+    it('use correct MosaicRepository', () => {
+      const factory = (context.reader as Symbol.Reader).factoryHttp
+      const stubbed = sinon.stub(factory, 'createMosaicRepository').returns(stubMosaics)
+
+      const repo = factory.createMosaicRepository()
+      expect(stubbed.calledOnce).to.be.true
+      expect(repo.getMosaic).to.not.be.undefined
+    })
+
+    it('use correct AccountRepository', () => {
+      const factory = (context.reader as Symbol.Reader).factoryHttp
+      const stubbed = sinon.stub(factory, 'createAccountRepository').returns(stubAccounts)
+
+      const repo = factory.createAccountRepository()
+      expect(stubbed.calledOnce).to.be.true
+      expect(repo.getAccountInfo).to.not.be.undefined
     })
   })
 })

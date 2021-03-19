@@ -7,7 +7,15 @@
  * @license     AGPL-3.0
  */
 
-import { Account, NetworkType, PublicAccount } from 'symbol-sdk'
+import {
+  Account,
+  AccountInfo,
+  AccountType,
+  NetworkType,
+  PublicAccount,
+  SupplementalPublicKeys,
+  UInt64,
+} from 'symbol-sdk'
 import { MnemonicPassPhrase } from 'symbol-hd-wallets'
 
 type TestAccountType = {
@@ -55,4 +63,22 @@ export const getTestMnemonic = () : MnemonicPassPhrase => {
     'early', 'runway', 'maximum', 'mother', 'shove', 'stamp',
     'behave', 'already', 'entry', 'west', 'swear', 'fortune',
   ].join(' '))
+}
+
+export const getTestAccountInfo = (name: string): AccountInfo => {
+  const account = getTestAccount(name)
+  return new AccountInfo(
+    1,
+    '1',
+    account.address,
+    UInt64.fromUint(1),
+    account.publicKey,
+    UInt64.fromUint(1),
+    AccountType.Main,
+    new SupplementalPublicKeys(),
+    [],
+    [],
+    UInt64.fromUint(1),
+    UInt64.fromUint(1)
+  )
 }

@@ -7,7 +7,10 @@
  * @license     AGPL-3.0
  */
 
-export { getTestAccount, getTestMnemonic } from './Accounts'
 export { getTestContext } from './Contexts'
 export { FakeCommand } from './Commands'
+export { getTestAccount, getTestMnemonic, getTestAccountInfo } from './Accounts'
+export { getTestMosaicInfo } from './Mosaics'
+export { getTestMarket, FakeMarket } from './Markets'
+export { Stubs } from './Stubs'
 

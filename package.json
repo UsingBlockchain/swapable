@@ -27,9 +27,12 @@
   "devDependencies": {
     "@types/chai": "^4.2.15",
     "@types/mocha": "^5.2.7",
+    "@types/sinon": "^9.0.11",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.3.3",
+    "sinon": "^9.2.4",
+    "faker": "^5.4.0",
     "eslint": "^6.8.0",
     "mocha": "^5.2.0",
     "rimraf": "^3.0.2",
