@@ -93,7 +93,7 @@ export const PoolTargetDerivationPath: string = 'm/4343\'/0\'/0\'/0\''
 export const Revision: number = 1
 
 /**
- * @class Swapable.AssetProtocol<__Adapter>
+ * @class Swapable.AutomatedPool
  * @package standards
  * @since v1.0.0
  * @description Generic class to describe Swapable digital assets.
