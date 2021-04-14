@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AutomatedPool | swapable - v1.0.2</title>
+	<title>DigitalMarket | swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">swapable - v1.0.2</a>
+					<a href="../index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -59,10 +59,10 @@
 					<a href="../modules/_src_swapable_.html">&quot;src/Swapable&quot;</a>
 				</li>
 				<li>
-					<a href="_src_swapable_.automatedpool.html">AutomatedPool</a>
+					<a href="_src_swapable_.digitalmarket.html">DigitalMarket</a>
 				</li>
 			</ul>
-			<h1>Class AutomatedPool</h1>
+			<h1>Class DigitalMarket</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<div class="tsd-comment tsd-typography">
 					<dl class="tsd-comment-tags">
 						<dt>class</dt>
-						<dd><p>Swapable.AutomatedPool</p>
+						<dd><p>Swapable.DigitalMarket</p>
 						</dd>
 						<dt>package</dt>
 						<dd><p>standards</p>
@@ -82,21 +82,7 @@
 						<dd><p>v1.0.0</p>
 						</dd>
 						<dt>description</dt>
-						<dd><p>Generic class to describe Swapable digital assets.</p>
-							<p>Swapable assets consist in combining two cryptocurrencies in
-								a liquidity pool to define an invariant <code>k</code> using a constant
-								product formula of: <code>x * y = k</code>  where <code>x</code> and <code>y</code> represent
-							the cryptocurrencies that are paired in said liquidity pool.</p>
-							<p>A swapable asset may be paired with any other cryptocurrency
-							provided that they reside on the same blockchain network.</p>
-							<p>Liquidity providers add liquidity into pools and Traders can
-								swap currencies. A fee is added to each trade at the rate of
-								0.30% which are then added to token reserves.  Providers can
-							withdraw their shares of the total reserve at any time.</p>
-							<p>When liquidity is added by a provider, they will be assigned
-								some <strong>Pool Shares</strong>. Those shares can then be burned at any
-								time by providers in order to take back their part of pooled
-							assets.</p>
+						<dd><p>Class that describes markets for swapable digital assets.</p>
 						</dd>
 					</dl>
 				</div>
@@ -105,10 +91,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">AutomatedPool</span>
+						<a href="_src_swapable_.automatedpool.html" class="tsd-signature-type">AutomatedPool</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="_src_swapable_.digitalmarket.html" class="tsd-signature-type">DigitalMarket</a>
+								<span class="target">DigitalMarket</span>
 							</li>
 						</ul>
 					</li>
@@ -124,58 +110,59 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_src_swapable_.automatedpool.html#bip39" class="tsd-kind-icon">bip39</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#mosaicinfo" class="tsd-kind-icon">mosaic<wbr>Info</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#reader" class="tsd-kind-icon">reader</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#reserveinfo" class="tsd-kind-icon">reserve<wbr>Info</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#result" class="tsd-kind-icon">result</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_src_swapable_.automatedpool.html#signer" class="tsd-kind-icon">signer</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#source" class="tsd-kind-icon">source</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#target" class="tsd-kind-icon">target</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_src_swapable_.digitalmarket.html#bip39" class="tsd-kind-icon">bip39</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#mosaicinfo" class="tsd-kind-icon">mosaic<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#reader" class="tsd-kind-icon">reader</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#reserveinfo" class="tsd-kind-icon">reserve<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#result" class="tsd-kind-icon">result</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_src_swapable_.digitalmarket.html#signer" class="tsd-kind-icon">signer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#source" class="tsd-kind-icon">source</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#target" class="tsd-kind-icon">target</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#identifier" class="tsd-kind-icon">identifier</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#identifier" class="tsd-kind-icon">identifier</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#canexecute" class="tsd-kind-icon">can<wbr>Execute</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#execute" class="tsd-kind-icon">execute</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#executeoffline" class="tsd-kind-icon">execute<wbr>Offline</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_src_swapable_.automatedpool.html#getcommand" class="tsd-kind-icon">get<wbr>Command</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_src_swapable_.automatedpool.html#getcontext" class="tsd-kind-icon">get<wbr>Context</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_swapable_.automatedpool.html#synchronize" class="tsd-kind-icon">synchronize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#canexecute" class="tsd-kind-icon">can<wbr>Execute</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#execute" class="tsd-kind-icon">execute</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#executeoffline" class="tsd-kind-icon">execute<wbr>Offline</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_src_swapable_.digitalmarket.html#getcommand" class="tsd-kind-icon">get<wbr>Command</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_src_swapable_.digitalmarket.html#getcontext" class="tsd-kind-icon">get<wbr>Context</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_src_swapable_.digitalmarket.html#synchronize" class="tsd-kind-icon">synchronize</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Automated<wbr>Pool<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reader<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReaderImpl</span>, signer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SignerImpl</span>, bip39<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MnemonicPassPhrase</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_swapable_.automatedpool.html" class="tsd-signature-type">AutomatedPool</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Digital<wbr>Market<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reader<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReaderImpl</span>, signer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SignerImpl</span>, bip39<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MnemonicPassPhrase</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_swapable_.digitalmarket.html" class="tsd-signature-type">DigitalMarket</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#constructor">constructor</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L152">src/Swapable.ts:152</a></li>
 								</ul>
@@ -228,18 +215,19 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_src_swapable_.automatedpool.html" class="tsd-signature-type">AutomatedPool</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_src_swapable_.digitalmarket.html" class="tsd-signature-type">DigitalMarket</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="bip39" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> bip39</h3>
 					<div class="tsd-signature tsd-kind-icon">bip39<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MnemonicPassPhrase</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#bip39">bip39</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L210">src/Swapable.ts:210</a></li>
 						</ul>
@@ -250,11 +238,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="mosaicinfo" class="tsd-anchor"></a>
 					<h3>mosaic<wbr>Info</h3>
 					<div class="tsd-signature tsd-kind-icon">mosaic<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MosaicInfo</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#mosaicinfo">mosaicInfo</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L139">src/Swapable.ts:139</a></li>
 						</ul>
@@ -269,11 +258,12 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#name">name</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L176">src/Swapable.ts:176</a></li>
 						</ul>
@@ -284,12 +274,13 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="reader" class="tsd-anchor"></a>
 					<h3>reader</h3>
 					<div class="tsd-signature tsd-kind-icon">reader<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReaderImpl</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_src_contracts_market_.market.html">Market</a>.<a href="../interfaces/_src_contracts_market_.market.html#reader">reader</a></p>
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#reader">reader</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L187">src/Swapable.ts:187</a></li>
 						</ul>
@@ -300,11 +291,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="reserveinfo" class="tsd-anchor"></a>
 					<h3>reserve<wbr>Info</h3>
 					<div class="tsd-signature tsd-kind-icon">reserve<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AccountInfo</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#reserveinfo">reserveInfo</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L147">src/Swapable.ts:147</a></li>
 						</ul>
@@ -322,11 +314,12 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="result" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> result</h3>
 					<div class="tsd-signature tsd-kind-icon">result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TransactionURI</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Transaction</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#result">result</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L152">src/Swapable.ts:152</a></li>
 						</ul>
@@ -339,11 +332,12 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="signer" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> signer</h3>
 					<div class="tsd-signature tsd-kind-icon">signer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SignerImpl</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#signer">signer</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L198">src/Swapable.ts:198</a></li>
 						</ul>
@@ -354,11 +348,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="source" class="tsd-anchor"></a>
 					<h3>source</h3>
 					<div class="tsd-signature tsd-kind-icon">source<span class="tsd-signature-symbol">:</span> <a href="_src_models_assetsource_.assetsource.html" class="tsd-signature-type">AssetSource</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#source">source</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L132">src/Swapable.ts:132</a></li>
 						</ul>
@@ -372,11 +367,12 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="target" class="tsd-anchor"></a>
 					<h3>target</h3>
 					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PublicAccount</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#target">target</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L126">src/Swapable.ts:126</a></li>
 						</ul>
@@ -392,17 +388,18 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 					<a name="identifier" class="tsd-anchor"></a>
 					<h3>identifier</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> identifier<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#identifier">identifier</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L236">src/Swapable.ts:236</a></li>
 								</ul>
@@ -425,18 +422,19 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="canexecute" class="tsd-anchor"></a>
 					<h3>can<wbr>Execute</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">can<wbr>Execute<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PublicAccount</span>, sharesAssetId<span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a>, command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, argv<span class="tsd-signature-symbol">: </span><a href="_src_models_commandoption_.commandoption.html" class="tsd-signature-type">CommandOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_models_allowanceresult_.allowanceresult.html" class="tsd-signature-type">AllowanceResult</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_src_contracts_market_.market.html">Market</a>.<a href="../interfaces/_src_contracts_market_.market.html#canexecute">canExecute</a></p>
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#canexecute">canExecute</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L331">src/Swapable.ts:331</a></li>
 								</ul>
@@ -485,15 +483,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>provider<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PublicAccount</span>, x<span class="tsd-signature-symbol">: </span><a href="_src_models_assetamount_.assetamount.html" class="tsd-signature-type">AssetAmount</a>, y<span class="tsd-signature-symbol">: </span><a href="_src_models_assetamount_.assetamount.html" class="tsd-signature-type">AssetAmount</a>, parameters<span class="tsd-signature-symbol">?: </span><a href="_src_models_transactionparameters_.transactionparameters.html" class="tsd-signature-type">TransactionParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#create">create</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L299">src/Swapable.ts:299</a></li>
 								</ul>
@@ -547,16 +546,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="execute" class="tsd-anchor"></a>
 					<h3>execute</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PublicAccount</span>, sharesAssetId<span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a>, command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parameters<span class="tsd-signature-symbol">: </span><a href="_src_models_transactionparameters_.transactionparameters.html" class="tsd-signature-type">TransactionParameters</a>, argv<span class="tsd-signature-symbol">: </span><a href="_src_models_commandoption_.commandoption.html" class="tsd-signature-type">CommandOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionURI</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Transaction</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_src_contracts_market_.market.html">Market</a>.<a href="../interfaces/_src_contracts_market_.market.html#execute">execute</a></p>
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#execute">execute</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L363">src/Swapable.ts:363</a></li>
 								</ul>
@@ -611,15 +611,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="executeoffline" class="tsd-anchor"></a>
 					<h3>execute<wbr>Offline</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">execute<wbr>Offline<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PublicAccount</span>, sharesAssetId<span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a>, command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parameters<span class="tsd-signature-symbol">: </span><a href="_src_models_transactionparameters_.transactionparameters.html" class="tsd-signature-type">TransactionParameters</a>, argv<span class="tsd-signature-symbol">: </span><a href="_src_models_commandoption_.commandoption.html" class="tsd-signature-type">CommandOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TransactionURI</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Transaction</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#executeoffline">executeOffline</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L406">src/Swapable.ts:406</a></li>
 								</ul>
@@ -675,15 +676,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getcommand" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Command</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Command<span class="tsd-signature-symbol">(</span>sharesAssetId<span class="tsd-signature-symbol">: </span><a href="_src_models_assetidentifier_.assetidentifier.html" class="tsd-signature-type">AssetIdentifier</a>, command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, context<span class="tsd-signature-symbol">: </span><a href="_src_contracts_context_.context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_contracts_command_.command.html" class="tsd-signature-type">Command</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#getcommand">getCommand</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L471">src/Swapable.ts:471</a></li>
 								</ul>
@@ -731,15 +733,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getcontext" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Context</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Context<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PublicAccount</span>, parameters<span class="tsd-signature-symbol">: </span><a href="_src_models_transactionparameters_.transactionparameters.html" class="tsd-signature-type">TransactionParameters</a>, argv<span class="tsd-signature-symbol">?: </span><a href="_src_models_commandoption_.commandoption.html" class="tsd-signature-type">CommandOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_contracts_context_.context.html" class="tsd-signature-type">Context</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#getcontext">getContext</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L444">src/Swapable.ts:444</a></li>
 								</ul>
@@ -781,16 +784,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="synchronize" class="tsd-anchor"></a>
 					<h3>synchronize</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">synchronize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_src_contracts_market_.market.html">Market</a>.<a href="../interfaces/_src_contracts_market_.market.html#synchronize">synchronize</a></p>
+								<p>Inherited from <a href="_src_swapable_.automatedpool.html">AutomatedPool</a>.<a href="_src_swapable_.automatedpool.html#synchronize">synchronize</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/Swapable.ts#L255">src/Swapable.ts:255</a></li>
 								</ul>
@@ -831,72 +835,72 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_swapable_.automatedpool.html" class="tsd-kind-icon">Automated<wbr>Pool</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_src_swapable_.automatedpool.html" class="tsd-kind-icon">Automated<wbr>Pool</a>
+						<a href="_src_swapable_.digitalmarket.html" class="tsd-kind-icon">Digital<wbr>Market</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_src_swapable_.automatedpool.html#bip39" class="tsd-kind-icon">bip39</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_src_swapable_.digitalmarket.html#bip39" class="tsd-kind-icon">bip39</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#mosaicinfo" class="tsd-kind-icon">mosaic<wbr>Info</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#mosaicinfo" class="tsd-kind-icon">mosaic<wbr>Info</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#name" class="tsd-kind-icon">name</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#reader" class="tsd-kind-icon">reader</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#reader" class="tsd-kind-icon">reader</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#reserveinfo" class="tsd-kind-icon">reserve<wbr>Info</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#reserveinfo" class="tsd-kind-icon">reserve<wbr>Info</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#result" class="tsd-kind-icon">result</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#result" class="tsd-kind-icon">result</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_src_swapable_.automatedpool.html#signer" class="tsd-kind-icon">signer</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_src_swapable_.digitalmarket.html#signer" class="tsd-kind-icon">signer</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#source" class="tsd-kind-icon">source</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#source" class="tsd-kind-icon">source</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#target" class="tsd-kind-icon">target</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#target" class="tsd-kind-icon">target</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#identifier" class="tsd-kind-icon">identifier</a>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#identifier" class="tsd-kind-icon">identifier</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#canexecute" class="tsd-kind-icon">can<wbr>Execute</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#canexecute" class="tsd-kind-icon">can<wbr>Execute</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#create" class="tsd-kind-icon">create</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#create" class="tsd-kind-icon">create</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#execute" class="tsd-kind-icon">execute</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#execute" class="tsd-kind-icon">execute</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#executeoffline" class="tsd-kind-icon">execute<wbr>Offline</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#executeoffline" class="tsd-kind-icon">execute<wbr>Offline</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_src_swapable_.automatedpool.html#getcommand" class="tsd-kind-icon">get<wbr>Command</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_src_swapable_.digitalmarket.html#getcommand" class="tsd-kind-icon">get<wbr>Command</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_src_swapable_.automatedpool.html#getcontext" class="tsd-kind-icon">get<wbr>Context</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_src_swapable_.digitalmarket.html#getcontext" class="tsd-kind-icon">get<wbr>Context</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_swapable_.automatedpool.html#synchronize" class="tsd-kind-icon">synchronize</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_swapable_.digitalmarket.html#synchronize" class="tsd-kind-icon">synchronize</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_src_swapable_.digitalmarket.html" class="tsd-kind-icon">Digital<wbr>Market</a>
-					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_src_swapable_.html#commandfn" class="tsd-kind-icon">Command<wbr>Fn</a>
 					</li>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>swapable - v1.0.2</title>
+	<title>swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">swapable - v1.0.2</a>
+					<a href="index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,176 +56,61 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> swapable - v1.0.2</h1>
+			<h1> swapable - v1.0.3</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<p align="center"><img src="https://swapable.symbol.ninja/logo-swapable.png" width="192"></p>
-				<a href="#swapable-automated-liquidity-pools" id="swapable-automated-liquidity-pools" style="color: inherit; text-decoration: none;">
-					<h1>Swapable: Automated Liquidity Pools</h1>
-				</a>
-				<p><a href="https://badge.fury.io/js/swapable"><img src="https://badge.fury.io/js/swapable.svg" alt="npm version"></a>
-				<a href="https://travis-ci.com/usingblockchain/swapable"><img src="https://travis-ci.com/usingblockchain/swapable.svg?branch=main" alt="Build Status"></a></p>
-				<p>This repository contains the source code for <strong>swapable</strong>, an open standard for peer-to-peer automated liquidity pool enabling the formation of smart <strong>digital markets</strong> on top of Symbol from NEM, and compatible networks.</p>
-				<ul>
-					<li><a href="https://swapable.symbol.ninja/">Reference documentation</a></li>
-					<li><a href="#installation">Installation</a></li>
-					<li><a href="#usage">Usage</a></li>
-					<li><a href="#sponsor-us">Sponsor Us</a></li>
-					<li><a href="#disclaimer">Disclaimer</a></li>
-					<li><a href="#license">Licensing</a></li>
-				</ul>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p><code>npm install swapable</code></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<p>:warning: The following example usage for the <code>swapable</code> library is subject to change.
-					:warning: This command execution creates at least one- or more than one - network-wide
-					<strong>account restriction</strong>. Restrictions can potentially lock you out of your account, so
-				please use this only with caution and only if you understand the risks.</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { AggregateTransaction, PublicAccount, SignedTransaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-sdk'</span>
-<span class="hljs-keyword">import</span> { MnemonicPassPhrase } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-hd-wallets'</span>
-<span class="hljs-keyword">import</span> { Swapable, NetworkConfig, TransactionParameters } <span class="hljs-keyword">from</span> <span class="hljs-string">'swapable'</span>
-<span class="hljs-keyword">import</span> { TransactionURI } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-uri-scheme'</span>
-
-<span class="hljs-comment">// - The following settings are network specific and may need changes</span>
-<span class="hljs-keyword">const</span> networkType = NetworkType.TEST_NET
-<span class="hljs-keyword">const</span> sourceNetwork = <span class="hljs-string">'57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6'</span>
-<span class="hljs-keyword">const</span> symbolMosaicId = <span class="hljs-string">'6BED913FA20223F8'</span>;
-<span class="hljs-keyword">const</span> transactionParams = <span class="hljs-keyword">new</span> TransactionParameters(
-  <span class="hljs-number">1573430400</span>, <span class="hljs-comment">// epochAdjustment</span>
-  Deadline.create(), <span class="hljs-comment">// transaction(s) deadline</span>
-  <span class="hljs-number">750000</span>, <span class="hljs-comment">// maxFee</span>
-)
-
-<span class="hljs-comment">// - You should use secure storage practices for mnemonic pass phrases.</span>
-<span class="hljs-keyword">const</span> keyRing = MnemonicPassPhrase.createRandom()
-
-<span class="hljs-comment">// - Initializes a so-called "network reader". The URL used here should</span>
-<span class="hljs-comment">//   typically refer to a running REST gateway on your node.</span>
-<span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Symbol</span>.Reader(
-  <span class="hljs-string">'http://dual-001.symbol.ninja:3000'</span>,
-  networkType,
-  sourceNetwork,
-  <span class="hljs-number">1615853185</span>,
-  <span class="hljs-keyword">new</span> MosaicId(symbolMosaicId),
-  <span class="hljs-string">'306FA94E0AB682964416C8172F858939533E5998906B8AFAD4A4585C7CDD722C'</span>,
-)
-
-<span class="hljs-comment">// - Initializes a key provider and distributed organization instance.</span>
-<span class="hljs-keyword">const</span> signer = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Symbol</span>.Signer() 
-<span class="hljs-keyword">const</span> swapable = <span class="hljs-keyword">new</span> Swapable.AutomatedPool(
-  <span class="hljs-string">'SWP:XYM'</span>,
-  reader,
-  signer,
-  keyRing,
-)
-
-<span class="hljs-comment">// offline creation of the `CreatePool` contract</span>
-<span class="hljs-keyword">const</span> poolId = swapable.create(
-  swapable.getTarget().publicAccount, <span class="hljs-comment">// actor</span>
-  provider, <span class="hljs-comment">// liquidity provider</span>
-  <span class="hljs-keyword">new</span> AssetAmount(Symbol_Testnet_SWP, <span class="hljs-number">10</span>),
-  <span class="hljs-keyword">new</span> AssetAmount(Symbol_Testnet_XYM, <span class="hljs-number">10</span>),
-  transactionParams,
-)
-
-<span class="hljs-comment">// get the transaction URI for `CreatePool` execution</span>
-<span class="hljs-keyword">const</span> resultURI: TransactionURI = swapable.result
-
-<span class="hljs-comment">// It is important to denote that given the **aggregate** nature of digital</span>
-<span class="hljs-comment">// contracts, multiple parties MAY be involved in the transaction and</span>
-<span class="hljs-comment">// it is therefor required to issue a HashLockTransaction before announcing</span>
-<span class="hljs-comment">// the aggregate bonded transaction that represents the contract.</span>
-
-<span class="hljs-comment">// :warning: It is recommended to sign the resulting transactions</span>
-<span class="hljs-comment">// using a hardware wallet rather than any type of software generated</span>
-<span class="hljs-comment">// wallets.</span></code></pre>
-				<a href="#sponsor-us" id="sponsor-us" style="color: inherit; text-decoration: none;">
-					<h2>Sponsor us</h2>
-				</a>
-				<table>
-					<thead>
-						<tr>
-							<th>Platform</th>
-							<th>Sponsor Link</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>Paypal</td>
-							<td><a href="https://paypal.me/usingblockchainltd">https://paypal.me/usingblockchainltd</a></td>
-						</tr>
-						<tr>
-							<td>Patreon</td>
-							<td><a href="https://patreon.com/usingblockchainltd">https://patreon.com/usingblockchainltd</a></td>
-						</tr>
-						<tr>
-							<td>Github</td>
-							<td><a href="https://github.com/sponsors/UsingBlockchain">https://github.com/sponsors/UsingBlockchain</a></td>
-						</tr>
-				</tbody></table>
-				<a href="#donations--pot-de-vin" id="donations--pot-de-vin" style="color: inherit; text-decoration: none;">
-					<h2>Donations / Pot de vin</h2>
-				</a>
-				<p>Donations can also be made with cryptocurrencies and will be used for running the project!</p>
-				<pre><code><span class="hljs-attribute">NEM      (XEM)</span>:     NB72EM6TTSX72O47T3GQFL345AB5WYKIDODKPPYW
-<span class="hljs-attribute">Symbol   (XYM)</span>:     NDQALDK4XWLOUYKPE7RDEWUI25YNRQ7VCGXMPCI
-<span class="hljs-attribute">Ethereum (ETH)</span>:     0x7a846fd5Daa4b904caF7C59f866bb906153305D2
-<span class="hljs-attribute">Bitcoin  (BTC)</span>:     3EVqgUqYFRYbf9RjhyjBgKXcEwAQxhaf6o</code></pre>
-				<a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
-					<h2>Credits</h2>
-				</a>
-				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Contributions</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>Using Blockchain Ltd (@UsingBlockchain) <a href="mailto:&#x69;&#110;&#x66;&#x6f;&#64;&#x75;&#x73;&#x69;&#x6e;&#103;&#x2d;&#98;&#x6c;&#x6f;&#99;&#107;&#99;&#104;&#x61;&#x69;&#110;&#x2e;&#x6f;&#x72;&#x67;">&#x69;&#110;&#x66;&#x6f;&#64;&#x75;&#x73;&#x69;&#x6e;&#103;&#x2d;&#98;&#x6c;&#x6f;&#99;&#107;&#99;&#104;&#x61;&#x69;&#110;&#x2e;&#x6f;&#x72;&#x67;</a></td>
-							<td>Product Owner</td>
-						</tr>
-						<tr>
-							<td>Grégory Saive (@eVias)</td>
-							<td>Lead Engineering</td>
-						</tr>
-						<tr>
-							<td>Rebecca Natterer</td>
-							<td>Lead Product Designer</td>
-						</tr>
-						<tr>
-							<td>Mansour Zebian</td>
-							<td>Lead Product Marketing</td>
-						</tr>
-						<tr>
-							<td>Pascal Severin (@offdev)</td>
-							<td>Alpha Contributor</td>
-						</tr>
-				</tbody></table>
-				<a href="#disclaimer" id="disclaimer" style="color: inherit; text-decoration: none;">
-					<h2>Disclaimer</h2>
-				</a>
-				<p>  <em>The author of this package cannot be held responsible for any loss of money or any malintentioned usage forms of this package. Please use this package with caution.</em></p>
-				<p>  <em>Our software contains links to the websites of third parties (“external links”). As the content of these websites is not under our control, we cannot assume any liability for such external content. In all cases, the provider of information of the linked websites is liable for the content and accuracy of the information provided. At the point in time when the links were placed, no infringements of the law were recognisable to us..</em></p>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h2>License</h2>
-				</a>
-				<p>Copyright 2020-2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom, All rights reserved.</p>
-				<p>Licensed under the <a href="LICENSE">AGPL v3 License</a>.</p>
-			</div>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>External modules</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_index_.html" class="tsd-kind-icon">&quot;index&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_swapable_.html" class="tsd-kind-icon">&quot;src/<wbr>Swapable&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_adapters_symbol_.html" class="tsd-kind-icon">&quot;src/adapters/<wbr>Symbol&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_addliquidity_.html" class="tsd-kind-icon">&quot;src/commands/<wbr>Add<wbr>Liquidity&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_createpool_.html" class="tsd-kind-icon">&quot;src/commands/<wbr>Create<wbr>Pool&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_executable_.html" class="tsd-kind-icon">&quot;src/commands/<wbr>Executable&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_removeliquidity_.html" class="tsd-kind-icon">&quot;src/commands/<wbr>Remove<wbr>Liquidity&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_swap_.html" class="tsd-kind-icon">&quot;src/commands/<wbr>Swap&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_commands_index_.html" class="tsd-kind-icon">&quot;src/commands/index&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_basecommand_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Base<wbr>Command&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_command_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Command&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_context_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Context&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_keyprovider_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Key<wbr>Provider&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_market_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Market&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_reader_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Reader&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_contracts_service_.html" class="tsd-kind-icon">&quot;src/contracts/<wbr>Service&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failurecommandexecution_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Command<wbr>Execution&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failureemptycontract_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Empty<wbr>Contract&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failureinvalidcommand_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Invalid<wbr>Command&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failureinvalidderivationpath_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Invalid<wbr>Derivation<wbr>Path&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failuremissingargument_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Missing<wbr>Argument&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_errors_failureoperationforbidden_.html" class="tsd-kind-icon">&quot;src/errors/<wbr>Failure<wbr>Operation<wbr>Forbidden&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_allowanceresult_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Allowance<wbr>Result&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_assetamount_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Asset<wbr>Amount&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_assetidentifier_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Asset<wbr>Identifier&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_assetsource_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Asset<wbr>Source&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_commandoption_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Command<wbr>Option&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_models_transactionparameters_.html" class="tsd-kind-icon">&quot;src/models/<wbr>Transaction<wbr>Parameters&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_services_hdservice_.html" class="tsd-kind-icon">&quot;src/services/HDService&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_services_multisigservice_.html" class="tsd-kind-icon">&quot;src/services/<wbr>Multisig<wbr>Service&quot;</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_src_services_transactionservice_.html" class="tsd-kind-icon">&quot;src/services/<wbr>Transaction<wbr>Service&quot;</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
+					<li class="globals current ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class="label tsd-is-external">

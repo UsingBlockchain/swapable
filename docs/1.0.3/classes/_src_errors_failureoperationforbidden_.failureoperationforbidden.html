@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;src/models/CommandOption&quot; | swapable - v1.0.2</title>
+	<title>FailureOperationForbidden | swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">swapable - v1.0.2</a>
+					<a href="../index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,10 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_src_models_commandoption_.html">&quot;src/models/CommandOption&quot;</a>
+					<a href="../modules/_src_errors_failureoperationforbidden_.html">&quot;src/errors/FailureOperationForbidden&quot;</a>
+				</li>
+				<li>
+					<a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html">FailureOperationForbidden</a>
 				</li>
 			</ul>
-			<h1>External module &quot;src/models/CommandOption&quot;</h1>
+			<h1>Class FailureOperationForbidden</h1>
 		</div>
 	</div>
 </header>
@@ -68,34 +71,88 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This file is part of Swapable shared under AGPL-3.0
-						Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom</p>
-					</div>
 					<dl class="tsd-comment-tags">
+						<dt>class</dt>
+						<dd><p>FailureOperationForbidden</p>
+						</dd>
 						<dt>package</dt>
 						<dd><p>Swapable</p>
 						</dd>
-						<dt>author</dt>
-						<dd><p>Grégory Saive for Using Blockchain Ltd <a href="mailto:&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;">&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;</a></p>
+						<dt>subpackage</dt>
+						<dd><p>Errors</p>
 						</dd>
-						<dt>license</dt>
-						<dd><p>AGPL-3.0</p>
+						<dt>since</dt>
+						<dd><p>v1.0.0</p>
+						</dd>
+						<dt>description</dt>
+						<dd><p>The operation is forbidden for the executing actor.</p>
 						</dd>
 					</dl>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_src_errors_failurecommandexecution_.failurecommandexecution.html" class="tsd-signature-type">FailureCommandExecution</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">FailureOperationForbidden</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.message</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.name</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:973</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.stack</p>
+						<p>Overrides Error.stack</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -106,15 +163,30 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_src_models_commandoption_.html">&quot;src/models/<wbr>Command<wbr>Option&quot;</a>
+						<a href="../modules/_src_errors_failureoperationforbidden_.html">&quot;src/errors/<wbr>Failure<wbr>Operation<wbr>Forbidden&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html" class="tsd-kind-icon">Failure<wbr>Operation<wbr>Forbidden</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="_src_errors_failureoperationforbidden_.failureoperationforbidden.html#stack" class="tsd-kind-icon">stack</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

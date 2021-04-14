@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;src/models/CommandOption&quot; | swapable - v1.0.2</title>
+	<title>AssetSource | swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">swapable - v1.0.2</a>
+					<a href="../index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,10 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_src_models_commandoption_.html">&quot;src/models/CommandOption&quot;</a>
+					<a href="../modules/_src_models_assetsource_.html">&quot;src/models/AssetSource&quot;</a>
+				</li>
+				<li>
+					<a href="_src_models_assetsource_.assetsource.html">AssetSource</a>
 				</li>
 			</ul>
-			<h1>External module &quot;src/models/CommandOption&quot;</h1>
+			<h1>Class AssetSource</h1>
 		</div>
 	</div>
 </header>
@@ -68,33 +71,131 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This file is part of Swapable shared under AGPL-3.0
-						Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom</p>
-					</div>
 					<dl class="tsd-comment-tags">
+						<dt>class</dt>
+						<dd><p>AssetSource</p>
+						</dd>
 						<dt>package</dt>
 						<dd><p>Swapable</p>
 						</dd>
-						<dt>author</dt>
-						<dd><p>Grégory Saive for Using Blockchain Ltd <a href="mailto:&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;">&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;</a></p>
+						<dt>subpackage</dt>
+						<dd><p>Models</p>
 						</dd>
-						<dt>license</dt>
-						<dd><p>AGPL-3.0</p>
+						<dt>since</dt>
+						<dd><p>v1.0.0</p>
+						</dd>
+						<dt>description</dt>
+						<dd><p>Model that describes the source blockchain network of a digital asset.</p>
 						</dd>
 					</dl>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AssetSource</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_models_assetsource_.assetsource.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_models_assetsource_.assetsource.html#network" class="tsd-kind-icon">network</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_models_assetsource_.assetsource.html#source" class="tsd-kind-icon">source</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Source<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, network<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Network</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_models_assetsource_.assetsource.html" class="tsd-signature-type">AssetSource</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/models/AssetSource.ts#L18">src/models/AssetSource.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructor for AssetSource objects</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> network: <span class="tsd-signature-type">Network</span><span class="tsd-signature-symbol"> =&nbsp;Network.CATAPULT_PUBLIC</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_src_models_assetsource_.assetsource.html" class="tsd-signature-type">AssetSource</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="network" class="tsd-anchor"></a>
+					<h3>network</h3>
+					<div class="tsd-signature tsd-kind-icon">network<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Network</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/models/AssetSource.ts#L46">src/models/AssetSource.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="source" class="tsd-anchor"></a>
+					<h3>source</h3>
+					<div class="tsd-signature tsd-kind-icon">source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/models/AssetSource.ts#L36">src/models/AssetSource.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>The source network generation hash</p>
+								<p>This value identifies a blockchain network by its genesis block hash. In case
+									of hard-forked networks, the hash of the <em>first block</em> on the <em>concurring</em> chain
+								must be used to identify the new network.</p>
+							</dd>
+							<dt>example</dt>
+							<dd><p>Source for &quot;Bitcoin Mainnet&quot; is: <code>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</code></p>
+							</dd>
+							<dt>example</dt>
+							<dd><p>Source for &quot;NEM Mainnet&quot; is: <code>438cf6375dab5a0d32f9b7bf151d4539e00a590f7c022d5572c7d41815a24be4</code></p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -106,15 +207,30 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_src_models_commandoption_.html">&quot;src/models/<wbr>Command<wbr>Option&quot;</a>
+						<a href="../modules/_src_models_assetsource_.html">&quot;src/models/<wbr>Asset<wbr>Source&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_models_assetsource_.assetsource.html" class="tsd-kind-icon">Asset<wbr>Source</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_src_models_assetsource_.assetsource.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_src_models_assetsource_.assetsource.html#network" class="tsd-kind-icon">network</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_src_models_assetsource_.assetsource.html#source" class="tsd-kind-icon">source</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

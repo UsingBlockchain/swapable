@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Reader | swapable - v1.0.2</title>
+	<title>MultisigService | swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">swapable - v1.0.2</a>
+					<a href="../index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_contracts_reader_.html">&quot;src/contracts/Reader&quot;</a>
+					<a href="../modules/_src_services_multisigservice_.html">&quot;src/services/MultisigService&quot;</a>
 				</li>
 				<li>
-					<a href="_src_contracts_reader_.reader.html">Reader</a>
+					<a href="_src_services_multisigservice_.multisigservice.html">MultisigService</a>
 				</li>
 			</ul>
-			<h1>Interface Reader</h1>
+			<h1>Class MultisigService</h1>
 		</div>
 	</div>
 </header>
@@ -71,19 +71,21 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This file is part of Swapable shared under AGPL-3.0
-						Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom</p>
-					</div>
 					<dl class="tsd-comment-tags">
+						<dt>class</dt>
+						<dd><p>MultisigService</p>
+						</dd>
 						<dt>package</dt>
 						<dd><p>Swapable</p>
 						</dd>
-						<dt>author</dt>
-						<dd><p>Grégory Saive for Using Blockchain Ltd <a href="mailto:&#103;&#114;&#x65;&#x67;&#64;&#x75;&#x62;&#x63;&#x2e;&#100;&#105;&#x67;&#x69;&#x74;&#x61;&#108;">&#103;&#114;&#x65;&#x67;&#64;&#x75;&#x62;&#x63;&#x2e;&#100;&#105;&#x67;&#x69;&#x74;&#x61;&#108;</a></p>
+						<dt>subpackage</dt>
+						<dd><p>Services</p>
 						</dd>
-						<dt>license</dt>
-						<dd><p>AGPL-3.0</p>
+						<dt>since</dt>
+						<dd><p>v1.0.0</p>
+						</dd>
+						<dt>description</dt>
+						<dd><p>Class that describes a service around multi-signature accounts.</p>
 						</dd>
 					</dl>
 				</div>
@@ -92,54 +94,134 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Reader</span>
+						<a href="_src_contracts_service_.service.html" class="tsd-signature-type">Service</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">MultisigService</span>
+							</li>
+						</ul>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_src_adapters_symbol_.reader.html" class="tsd-signature-type">Reader</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_src_services_multisigservice_.multisigservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_contracts_reader_.reader.html#gatewayurl" class="tsd-kind-icon">gateway<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_src_services_multisigservice_.multisigservice.html#context" class="tsd-kind-icon">context</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_services_multisigservice_.multisigservice.html#getmultisigaccountinfofromgraph" class="tsd-kind-icon">get<wbr>Multisig<wbr>Account<wbr>Info<wbr>From<wbr>Graph</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Multisig<wbr>Service<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="_src_contracts_context_.context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_services_multisigservice_.multisigservice.html" class="tsd-signature-type">MultisigService</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_src_contracts_service_.service.html">Service</a>.<a href="_src_contracts_service_.service.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/contracts/Service.ts#L21">src/contracts/Service.ts:21</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct a service object around <code>context</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <a href="_src_contracts_context_.context.html" class="tsd-signature-type">Context</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_src_services_multisigservice_.multisigservice.html" class="tsd-signature-type">MultisigService</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="gatewayurl" class="tsd-anchor"></a>
-					<h3>gateway<wbr>Url</h3>
-					<div class="tsd-signature tsd-kind-icon">gateway<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="context" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> context</h3>
+					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <a href="_src_contracts_context_.context.html" class="tsd-signature-type">Context</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_contracts_service_.service.html">Service</a>.<a href="_src_contracts_service_.service.html#context">context</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/contracts/Reader.ts#L19">src/contracts/Reader.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/contracts/Service.ts#L31">src/contracts/Service.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>The endpoint URL. This URL shall point to the network
-								node that is used to READ data about swapable assets.</p>
-							</dd>
-							<dt>example</dt>
-							<dd><p><a href="https://node.ubc.digital:3000">https://node.ubc.digital:3000</a></p>
-							</dd>
-							<dt>example</dt>
-							<dd><p>xml+rpc://bitcoin.ubc.digital:1234</p>
-							</dd>
-						</dl>
+						<div class="lead">
+						</div>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getmultisigaccountinfofromgraph" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Multisig<wbr>Account<wbr>Info<wbr>From<wbr>Graph</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Multisig<wbr>Account<wbr>Info<wbr>From<wbr>Graph<span class="tsd-signature-symbol">(</span>graph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MultisigAccountGraphInfo</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MultisigAccountInfo</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/MultisigService.ts#L36">src/services/MultisigService.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>function</dt>
+									<dd><p>Swapable.MultisigService.getMultisigAccountInfoFromGraph()</p>
+									</dd>
+									<dt>static</dt>
+									<dd></dd>
+									<dt>access</dt>
+									<dd><p>public</p>
+									</dd>
+									<dt>description</dt>
+									<dd><p>Helper function to reduce a multi-signature graph to an
+										array of multi-signature account information.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>graph: <span class="tsd-signature-type">MultisigAccountGraphInfo</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MultisigAccountInfo</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -150,7 +232,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_src_contracts_reader_.html">&quot;src/contracts/<wbr>Reader&quot;</a>
+						<a href="../modules/_src_services_multisigservice_.html">&quot;src/services/<wbr>Multisig<wbr>Service&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -158,11 +240,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_contracts_reader_.reader.html" class="tsd-kind-icon">Reader</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_services_multisigservice_.multisigservice.html" class="tsd-kind-icon">Multisig<wbr>Service</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_contracts_reader_.reader.html#gatewayurl" class="tsd-kind-icon">gateway<wbr>Url</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="_src_services_multisigservice_.multisigservice.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_src_services_multisigservice_.multisigservice.html#context" class="tsd-kind-icon">context</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_src_services_multisigservice_.multisigservice.html#getmultisigaccountinfofromgraph" class="tsd-kind-icon">get<wbr>Multisig<wbr>Account<wbr>Info<wbr>From<wbr>Graph</a>
 							</li>
 						</ul>
 					</li>

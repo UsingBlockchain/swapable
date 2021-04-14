@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;src/models/CommandOption&quot; | swapable - v1.0.2</title>
+	<title>DerivationPathLevels | swapable - v1.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">swapable - v1.0.2</a>
+					<a href="../index.html" class="title">swapable - v1.0.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,10 +56,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_src_models_commandoption_.html">&quot;src/models/CommandOption&quot;</a>
+					<a href="../modules/_src_services_hdservice_.html">&quot;src/services/HDService&quot;</a>
+				</li>
+				<li>
+					<a href="../modules/_src_services_hdservice_.derivation.html">Derivation</a>
+				</li>
+				<li>
+					<a href="_src_services_hdservice_.derivation.derivationpathlevels.html">DerivationPathLevels</a>
 				</li>
 			</ul>
-			<h1>External module &quot;src/models/CommandOption&quot;</h1>
+			<h1>Enumeration DerivationPathLevels</h1>
 		</div>
 	</div>
 </header>
@@ -68,19 +74,15 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This file is part of Swapable shared under AGPL-3.0
-						Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom</p>
-					</div>
 					<dl class="tsd-comment-tags">
-						<dt>package</dt>
-						<dd><p>Swapable</p>
+						<dt>enum</dt>
+						<dd><p>DerivationPathLevels</p>
 						</dd>
-						<dt>author</dt>
-						<dd><p>Grégory Saive for Using Blockchain Ltd <a href="mailto:&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;">&#x67;&#x72;&#x65;&#103;&#x40;&#x75;&#98;&#x63;&#46;&#x64;&#105;&#103;&#x69;&#x74;&#x61;&#108;</a></p>
+						<dt>description</dt>
+						<dd><p>Enumeration of available derivation path levels (as of BIP44).</p>
 						</dd>
-						<dt>license</dt>
-						<dd><p>AGPL-3.0</p>
+						<dt>link</dt>
+						<dd><p><a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#path-levels">https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#path-levels</a></p>
 						</dd>
 					</dl>
 				</div>
@@ -90,12 +92,69 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_src_services_hdservice_.derivation.derivationpathlevels.html#account" class="tsd-kind-icon">Account</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_src_services_hdservice_.derivation.derivationpathlevels.html#address" class="tsd-kind-icon">Address</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_src_services_hdservice_.derivation.derivationpathlevels.html#cointype" class="tsd-kind-icon">Coin<wbr>Type</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_src_services_hdservice_.derivation.derivationpathlevels.html#purpose" class="tsd-kind-icon">Purpose</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_src_services_hdservice_.derivation.derivationpathlevels.html#remote" class="tsd-kind-icon">Remote</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="account" class="tsd-anchor"></a>
+					<h3>Account</h3>
+					<div class="tsd-signature tsd-kind-icon">Account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;3</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/HDService.ts#L32">src/services/HDService.ts:32</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="address" class="tsd-anchor"></a>
+					<h3>Address</h3>
+					<div class="tsd-signature tsd-kind-icon">Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;5</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/HDService.ts#L34">src/services/HDService.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="cointype" class="tsd-anchor"></a>
+					<h3>Coin<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">Coin<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;2</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/HDService.ts#L31">src/services/HDService.ts:31</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="purpose" class="tsd-anchor"></a>
+					<h3>Purpose</h3>
+					<div class="tsd-signature tsd-kind-icon">Purpose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/HDService.ts#L30">src/services/HDService.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="remote" class="tsd-anchor"></a>
+					<h3>Remote</h3>
+					<div class="tsd-signature tsd-kind-icon">Remote<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;4</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/usingblockchain/swapable/blob/a817f3f/src/services/HDService.ts#L33">src/services/HDService.ts:33</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -106,14 +165,43 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_src_models_commandoption_.html">&quot;src/models/<wbr>Command<wbr>Option&quot;</a>
+						<a href="../modules/_src_services_hdservice_.html">&quot;src/services/HDService&quot;</a>
+						<ul>
+							<li class="current tsd-kind-module tsd-parent-kind-external-module">
+								<a href="../modules/_src_services_hdservice_.derivation.html">Derivation</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_src_models_commandoption_.commandoption.html" class="tsd-kind-icon">Command<wbr>Option</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum tsd-parent-kind-module">
+						<a href="_src_services_hdservice_.derivation.derivationpathlevels.html" class="tsd-kind-icon">Derivation<wbr>Path<wbr>Levels</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_src_services_hdservice_.derivation.derivationpathlevels.html#account" class="tsd-kind-icon">Account</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_src_services_hdservice_.derivation.derivationpathlevels.html#address" class="tsd-kind-icon">Address</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_src_services_hdservice_.derivation.derivationpathlevels.html#cointype" class="tsd-kind-icon">Coin<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_src_services_hdservice_.derivation.derivationpathlevels.html#purpose" class="tsd-kind-icon">Purpose</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_src_services_hdservice_.derivation.derivationpathlevels.html#remote" class="tsd-kind-icon">Remote</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_src_services_hdservice_.derivation.hdservice.html" class="tsd-kind-icon">HDService</a>
 					</li>
 				</ul>
 			</nav>
