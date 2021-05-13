@@ -2,89 +2,53 @@
 
 # Swapable: Automated Liquidity Pools
 
-[![npm version](https://badge.fury.io/js/swapable.svg)](https://badge.fury.io/js/swapable)
-[![Build Status](https://travis-ci.com/usingblockchain/swapable.svg?branch=main)](https://travis-ci.com/usingblockchain/swapable)
+[![npm-badge][npm-badge]][npm-url]
+[![size-badge][size-badge]][npm-url]
+[![dl-badge][dl-badge]][npm-url]
+[![Build Status](https://travis-ci.com/UsingBlockchain/symbol-taxonomy.svg?branch=main)](https://travis-ci.com/UsingBlockchain/symbol-taxonomy)
 
-This repository contains the source code for **swapable**, an open standard for peer-to-peer automated liquidity pool enabling the formation of smart **digital markets** on top of Symbol from NEM, and compatible networks.
+This repository contains the source code for **swapable**, an open standard for peer-to-peer automated liquidity pools on top of Symbol from NEM, and compatible networks.
+
+This library empowers the creation and operations of **automated liquidity pools** using Symbol from NEM and compatible networks.
 
 - [Reference documentation][ref-docs]
+- [Introduction](#introduction)
+- [Contracts found here](#contracts-found-here)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Sponsor Us](#sponsor-us)
 - [Disclaimer](#disclaimer)
 - [Licensing](#license)
 
+## Introduction
+
+This library empowers the creation and operations of automated liquidity pools using Symbol from NEM and compatible networks.
+
+Swapable assets consist in combining two cryptocurrencies in a liquidity pool to define an invariant `k` using a constant product formula of: `x * y = k`  where `x` and `y` represent the cryptocurrencies that are paired in said liquidity pool. The shares of liquidity providers are determined with another asset that we call the **pool shares mosaic** and which is issued at the time of creation of a liquidity pool, i.e. each liquidity pool will have its own pool shares mosaic.
+
+A swapable asset may be paired with any other cryptocurrency provided that they reside on the same blockchain network.
+
+Liquidity providers add liquidity into pools and Traders can swap currencies. A fee is added to each trade at the rate of 0.30% which are then added to token reserves. Providers can withdraw their shares of the total reserve at any time.
+
+When liquidity is added by a provider, they will be assigned some **Pool Shares**. Those shares can then be burned at any time by providers in order to take back their part of pooled assets.
+
+An automated liquidity pool is represented by the following properties:
+
+- **A target account**: Consists of a public account which holds the funds of said pool. This account SHOULD be converted to a multi-signature account, i.e cosignatories can be the operators of a DAO (see @ubcdigital/governable).
+
+- **A pool shares mosaic**: Consists of a digital asset that is created only for the purpose of keeping track liquidity provider shares in pools. These assets can be burned for pooled assets at any time but are not exchangeable for other cryptocurrencies. Using Symbol from NEM, this asset is represented by a **non-transferrable** mosaic.
+
+## Contracts found here
+
+| Contract Name | Description |
+| --- | --- |
+| **CreatePool** | Contract for *creating* a new liquidity pool. This contract is typically executed by liquidity providers and require the input of two different cryptocurrencies marked `x` and `y` which form the liquidity pool, a.k.a the market pair. |
+| **AddLiquidity** | Contract for *adding liquidity* to an already existing liquidity pool. This contract is typically executed by liquidity providers and requires the input of two cryptocurrencies that have previously been paired in a liquidity pool with the `CreatePool` contract. |
+| **RemoveLiquidity** | Contract for *removing liquidity* from an already existing liquidity pool. This contract is typically executed by liquidity providers and requires the input of two cryptocurrencies that have previously been paired in a liquidity pool with the `CreatePool` contract. |
+| **Swap** | Contract for *swapping currencies*. This contract is typically executed by traders and requires the input of one cryptocurrency and one output denominator. Prior to the execution of *swaps* between `x` and `y`, a liquidity pool must exist that provides liquidity for the market pair `x:y`, i.e. using the `CreatePool` contract. |
+
 ## Installation
 
-`npm install swapable`
-
-## Usage
-
-:warning: The following example usage for the `swapable` library is subject to change.
-:warning: This command execution creates at least one- or more than one - network-wide
-**account restriction**. Restrictions can potentially lock you out of your account, so
-please use this only with caution and only if you understand the risks.
-
-```javascript
-import { AggregateTransaction, PublicAccount, SignedTransaction } from 'symbol-sdk'
-import { MnemonicPassPhrase } from 'symbol-hd-wallets'
-import { Swapable, NetworkConfig, TransactionParameters } from 'swapable'
-import { TransactionURI } from 'symbol-uri-scheme'
-
-// - The following settings are network specific and may need changes
-const networkType = NetworkType.TEST_NET
-const sourceNetwork = '57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6'
-const symbolMosaicId = '6BED913FA20223F8';
-const transactionParams = new TransactionParameters(
-  1573430400, // epochAdjustment
-  Deadline.create(), // transaction(s) deadline
-  750000, // maxFee
-)
-
-// - You should use secure storage practices for mnemonic pass phrases.
-const keyRing = MnemonicPassPhrase.createRandom()
-
-// - Initializes a so-called "network reader". The URL used here should
-//   typically refer to a running REST gateway on your node.
-const reader = new Symbol.Reader(
-  'http://dual-001.symbol.ninja:3000',
-  networkType,
-  sourceNetwork,
-  1615853185,
-  new MosaicId(symbolMosaicId),
-  '306FA94E0AB682964416C8172F858939533E5998906B8AFAD4A4585C7CDD722C',
-)
-
-// - Initializes a key provider and distributed organization instance.
-const signer = new Symbol.Signer() 
-const swapable = new Swapable.AutomatedPool(
-  'SWP:XYM',
-  reader,
-  signer,
-  keyRing,
-)
-
-// offline creation of the `CreatePool` contract
-const poolId = swapable.create(
-  swapable.getTarget().publicAccount, // actor
-  provider, // liquidity provider
-  new AssetAmount(Symbol_Testnet_SWP, 10),
-  new AssetAmount(Symbol_Testnet_XYM, 10),
-  transactionParams,
-)
-
-// get the transaction URI for `CreatePool` execution
-const resultURI: TransactionURI = swapable.result
-
-// It is important to denote that given the **aggregate** nature of digital
-// contracts, multiple parties MAY be involved in the transaction and
-// it is therefor required to issue a HashLockTransaction before announcing
-// the aggregate bonded transaction that represents the contract.
-
-// :warning: It is recommended to sign the resulting transactions
-// using a hardware wallet rather than any type of software generated
-// wallets.
-```
+`npm i -g @ubcdigital/swapable`
 
 ## Sponsor us
 
@@ -93,25 +57,7 @@ const resultURI: TransactionURI = swapable.result
 | Paypal | [https://paypal.me/usingblockchainltd](https://paypal.me/usingblockchainltd) |
 | Patreon | [https://patreon.com/usingblockchainltd](https://patreon.com/usingblockchainltd) |
 | Github | [https://github.com/sponsors/UsingBlockchain](https://github.com/sponsors/UsingBlockchain) |
-
-## Donations / Pot de vin
-
-Donations can also be made with cryptocurrencies and will be used for running the project!
-
-    NEM      (XEM):     NB72EM6TTSX72O47T3GQFL345AB5WYKIDODKPPYW
-    Symbol   (XYM):     NDQALDK4XWLOUYKPE7RDEWUI25YNRQ7VCGXMPCI
-    Ethereum (ETH):     0x7a846fd5Daa4b904caF7C59f866bb906153305D2
-    Bitcoin  (BTC):     3EVqgUqYFRYbf9RjhyjBgKXcEwAQxhaf6o
-
-## Credits
-
-| Name | Contributions |
-| --- | --- |
-| Using Blockchain Ltd (@UsingBlockchain) <info@using-blockchain.org> | Product Owner |
-| Grégory Saive (@eVias) | Lead Engineering |
-| Rebecca Natterer | Lead Product Designer |
-| Mansour Zebian | Lead Product Marketing |
-| Pascal Severin (@offdev) | Alpha Contributor |
+| :coffee: :coffee: :coffee: | [https://www.buymeacoffee.com/UBCDigital](https://www.buymeacoffee.com/UBCDigital) |
 
 ## Disclaimer
 
@@ -121,8 +67,13 @@ Donations can also be made with cryptocurrencies and will be used for running th
 
 ## License
 
-Copyright 2020-2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom, All rights reserved.
+Copyright 2020-2021 [Using Blockchain Ltd][ref-ltd], Reg No.: 12658136, United Kingdom, All rights reserved.
 
 Licensed under the [AGPL v3 License](LICENSE).
 
 [ref-docs]: https://swapable.symbol.ninja/
+[ref-ltd]: https://using-blockchain.org
+[npm-url]: https://www.npmjs.com/package/@ubcdigital/swapable
+[npm-badge]: https://img.shields.io/npm/v/@ubcdigital/swapable
+[size-badge]: https://img.shields.io/bundlephobia/min/@ubcdigital/swapable
+[dl-badge]: https://img.shields.io/npm/dt/@ubcdigital/swapable
