@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import { TransactionURI } from 'symbol-uri-scheme'
 import {
   AccountInfo,
@@ -243,7 +242,7 @@ export abstract class Executable extends BaseCommand {
   ): number {
     // - Step out if we don't have the info
     if (this.reserveInfo === undefined) {
-      return 0 //XXX FailureEmptyReserve
+      return 0 // XXX FailureEmptyReserve
     }
 
     // - Reads reserve mosaic balance
@@ -252,8 +251,8 @@ export abstract class Executable extends BaseCommand {
     )
 
     // - Step out if we don't have the info
-    if (! reserve.length) {
-      return 0 //XXX FailureEmptyReserve
+    if (!reserve.length) {
+      return 0 // XXX FailureEmptyReserve
     }
 
     return reserve[0].amount.compact()

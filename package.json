@@ -1,7 +1,7 @@
 {
   "name": "@ubcdigital/swapable",
-  "version": "1.1.0",
-  "license": "AGPL-3.0",
+  "version": "1.2.0",
+  "license": "LGPL-3.0-only",
   "description": "Swapable: Automated Liquidity Pools",
   "keywords": [
     "blockchain",
@@ -20,20 +20,16 @@
   },
   "dependencies": {
     "rxjs": "^6.6.6",
-    "symbol-hd-wallets": "^0.14.0",
-    "symbol-sdk": "^0.23.2",
+    "symbol-sdk": "^1.0.1",
     "symbol-uri-scheme": "^0.6.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
     "@types/mocha": "^5.2.7",
     "@types/sinon": "^9.0.11",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.3.3",
     "sinon": "^9.2.4",
     "faker": "^5.4.0",
-    "eslint": "^6.8.0",
     "mocha": "^5.2.0",
     "rimraf": "^3.0.2",
     "ts-node": "^7.0.0",
@@ -43,8 +39,6 @@
     "utf8": "3.0.0"
   },
   "scripts": {
-    "lint": "eslint src/ --ext .ts && eslint test/ --ext .ts",
-    "lint:fix": "eslint src/ --ext .ts --fix && eslint test/ --ext .ts --fix",
     "build": "rimraf dist && mkdir dist && tsc",
     "pretest": "npm run build",
     "test": "mocha --ui bdd --recursive ./dist/test",
@@ -58,5 +52,5 @@
   "bugs": {
     "url": "https://github.com/usingblockchain/swapable/issues"
   },
-  "homepage": "https://github.com/usingblockchain/swapable#readme"
+  "homepage": "https://swapable.symbol.ninja"
 }

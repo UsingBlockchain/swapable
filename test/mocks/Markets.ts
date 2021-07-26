@@ -1,10 +1,10 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
 import {
   MosaicId,
@@ -13,10 +13,9 @@ import {
 } from 'symbol-sdk'
 
 // internal dependencies
-import { getTestMnemonic } from './Accounts'
+import { getTestAccount } from './Accounts'
 import { Command, CommandOption, Context, Swapable, Symbol, TransactionParameters } from '../../index'
 
-const mnemonic = getTestMnemonic()
 const seedHash = 'ACECD90E7B248E012803228ADB4424F0D966D24149B72E58987D2BF2F2AF03C4'
 
 export class FakeMarket extends Swapable.DigitalMarket {
@@ -55,7 +54,6 @@ export const getTestMarket = (): FakeMarket => {
       new MosaicId('519FC24B9223E0B4'),
       'DummyNodePublicKey',
     ),
-    new Symbol.Signer(),
-    mnemonic,
+    getTestAccount('target'),
   )
 }

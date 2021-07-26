@@ -1,19 +1,17 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import { PublicAccount } from 'symbol-sdk'
 
 // internal dependencies
 import {
   CommandOption,
   Reader,
-  KeyProvider,
   TransactionParameters,
 } from '../../index'
 
@@ -41,11 +39,6 @@ export class Context {
      * @description Blockchain reader adapter.
      */
     public reader: Reader,
-
-    /**
-     * @description Blockchain key provider.
-     */
-    public signer: KeyProvider,
 
     /**
      * @description Transaction parameters

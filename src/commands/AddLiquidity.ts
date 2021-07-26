@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {
   InnerTransaction,
   PublicAccount,
@@ -30,7 +29,7 @@ import {
 } from '../../index'
 import { Executable } from './Executable'
 
-//XXX remove this, used only for type-discovery in command options below.
+// XXX remove this, used only for type-discovery in command options below.
 const Symbol_Testnet_SWP = new AssetIdentifier('00000001', new PublicAccount())
 const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
 
@@ -166,15 +165,15 @@ export class AddLiquidity extends Executable {
     // MINT FEE principle (0.05 % of shares issued), 
     // https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol#L117
     // if fee is on, mint liquidity equivalent to 1/6th of the growth in sqrt(k)
-    //XXX if (pool_exists)
-    //XXX   rootK = Math.sqrt(reserve0 * reserve1)
-    //XXX   rootKLast = Math.sqrt(kLast)
-    //XXX   if (rootK > rootKLast)
-    //XXX     numerator = totalSupply.mul(rootK.sub(rootKLast));
-    //XXX     denominator = rootK.mul(5).add(rootKLast);
-    //XXX     liquidity = numerator / denominator;
-    //XXX     if (liquidity > 0) _mint(feeTo, liquidity);
-    //XXX else kLast = 0
+    // XXX if (pool_exists)
+    // XXX   rootK = Math.sqrt(reserve0 * reserve1)
+    // XXX   rootKLast = Math.sqrt(kLast)
+    // XXX   if (rootK > rootKLast)
+    // XXX     numerator = totalSupply.mul(rootK.sub(rootKLast));
+    // XXX     denominator = rootK.mul(5).add(rootKLast);
+    // XXX     liquidity = numerator / denominator;
+    // XXX     if (liquidity > 0) _mint(feeTo, liquidity);
+    // XXX else kLast = 0
 
     // - Calculate liquidity proportions ("contribution of provider")
     const liquidity = Math.min(
@@ -208,7 +207,7 @@ export class AddLiquidity extends Executable {
         new Mosaic(
           this.identifier.toMosaicId(),
           UInt64.fromUint(liquidity)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,
@@ -230,7 +229,7 @@ export class AddLiquidity extends Executable {
         new Mosaic(
           input_y.identifier.toMosaicId(),
           UInt64.fromUint(input_y.amount)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,

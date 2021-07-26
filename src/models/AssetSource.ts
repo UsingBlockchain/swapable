@@ -1,13 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-import { Network } from 'symbol-hd-wallets'
-
 /**
  * @class AssetSource
  * @package Swapable
@@ -34,16 +32,6 @@ export class AssetSource {
      * @example Source for "NEM Mainnet" is: `438cf6375dab5a0d32f9b7bf151d4539e00a590f7c022d5572c7d41815a24be4`
      */
     public source: string,
-
-    /**
-     * @description The source network identity
-     *
-     * This value identifies a blockchain network's BIP32 keychain.
-     *
-     * @example Network for "Bitcoin Mainnet" is: `Network.BITCOIN`
-     * @example Network for "Symbol Mainnet" is: `Network.CATAPULT_PUBLIC`
-     */
-    public network: Network = Network.CATAPULT_PUBLIC
   )
   {}
 }

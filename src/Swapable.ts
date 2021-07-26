@@ -1,15 +1,14 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
 import { of } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 import { TransactionURI } from 'symbol-uri-scheme'
-import { MnemonicPassPhrase } from 'symbol-hd-wallets'
 import {
   AccountInfo,
   PublicAccount,
@@ -33,9 +32,7 @@ import {
   TransactionParameters,
 } from '../index'
 import {
-  Accountable,
   Reader as ReaderImpl,
-  Signer as SignerImpl,
 } from './adapters/Symbol'
 
 /**
@@ -115,6 +112,25 @@ export const Revision: number = 1
  * some **Pool Shares**. Those shares can then be burned at any
  * time by providers in order to take back their part of pooled
  * assets.
+ *
+ * @example Create a liquidity pool
+ *
+ * ```typescript
+ * import { DigitalMarket, dHealth } from '@ubcdigital/swapable';
+ *
+ * const market = new DigitalMarket(
+ *   'DHP:wXYM',
+ *   new dHealth.Reader(
+ *     'http://dual-01.dhealth.cloud:3000',
+ *      NetworkType.MAIN_NET,
+ *      'ED5761EA890A096C50D3F50B7C2F0CCB4B84AFC9EA870F381E84DDE36D04EF16',
+ *      1616978397,
+ *      new MosaicId('39E0C49FA322A459'),
+ *      '5172C98BD61DF32F447C501DE8090A9D7096F9E71975D788D67F7A82B8C04EFA',
+ *   ),
+ *   'NDS6LVW7ZWXZE2TVCA5DANKE7RSD3IMNWOF7FZQ'
+ * );
+ * ```
  */
 export class AutomatedPool implements Market {
 
@@ -153,15 +169,13 @@ export class AutomatedPool implements Market {
 
   /**
    * Constructs an automated liquidity pool instance around a
-   * name of \a name, a network reader \a reader and a signer
-   * implementation of \a signer. Also \a bip39 mnemonic pass
-   * phrases are used to derive deterministic child accounts.
+   * name of \a name, a network reader \a reader and a target
+   * account \a target.
    *
    * @access public
-   * @param   {string}              name        The name of the automated liquidity pool (e.g.: "XYM:BTC").
-   * @param   {TReader}             reader      The blockchain network reader configuration.
-   * @param   {SignerImpl}          signer      The digital signature implementation ("key provider").
-   * @param   {MnemonicPassPhrase}  bip39       The mnemonic pass phrase ("24-words"). Caution here.
+   * @param   {string}          name        The name of the automated liquidity pool (e.g.: "XYM:BTC").
+   * @param   {TReader}         reader      The blockchain network reader configuration.
+   * @param   {PublicAccount}   target      The liquidity pool target account (holding funds).
    */
   public constructor(
     /**
@@ -187,38 +201,16 @@ export class AutomatedPool implements Market {
     public readonly reader: ReaderImpl,
 
     /**
-     * @readonly
-     * @access protected
-     * @description The digital signature implementation ("key provider").
+     * @description The target account that represents the pool.
      *
-     * Our first implementation uses a Symbol blockchain network
-     * adapter as ReaderImpl and SignerImpl. It is possible that
-     * other network adapters are implemented in the future.
+     * This account holds the paired cryptocurrencies and is the
+     * owner of the pool shares mosaic which is created for each
+     * liquidity pool. This account *should* be multi-signature.
      */
-    protected readonly signer: SignerImpl,
-
-    /**
-     * @readonly
-     * @access protected
-     * @description The mnemonic pass phrase ("24-words"). Caution here.
-     * 
-     * :warning: This information is highly sensitive. In case you
-     * you are willing to host/deploy an automated pool, please do
-     * take caution when handling the aforementioned mnemonic pass
-     * phrase.
-     */
-    protected readonly bip39: MnemonicPassPhrase,
+    target: PublicAccount,
   ) {
-    // - Derive child account in local scope
-    const account = Accountable.derive(
-      bip39.toSeed(/* XXX password */),
-      PoolTargetDerivationPath,
-      this.reader.networkType,
-      signer,
-    )
-
     // - Only store the public account in instance
-    this.target = account.publicAccount
+    this.target = target
 
     // - Set asset source network configuration
     this.source = new AssetSource(this.reader.generationHash)
@@ -450,7 +442,6 @@ export class AutomatedPool implements Market {
       Revision,
       actor,
       this.reader,
-      this.signer,
       parameters,
       argv
     )

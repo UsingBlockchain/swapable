@@ -1,17 +1,16 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
 
 // errors
 export { FailureCommandExecution } from './src/errors/FailureCommandExecution'
 export { FailureEmptyContract } from './src/errors/FailureEmptyContract'
 export { FailureInvalidCommand } from './src/errors/FailureInvalidCommand'
-export { FailureInvalidDerivationPath } from './src/errors/FailureInvalidDerivationPath'
 export { FailureMissingArgument } from './src/errors/FailureMissingArgument'
 export { FailureOperationForbidden } from './src/errors/FailureOperationForbidden'
 
@@ -30,12 +29,14 @@ export { Service } from './src/contracts/Service'
 export { BaseCommand } from './src/contracts/BaseCommand'
 export { Market } from './src/contracts/Market'
 export { Reader } from './src/contracts/Reader'
-export { KeyProvider } from './src/contracts/KeyProvider'
 
-// adapters: exports one class `Reader`, one class `Signer`,
-// and one class `Accountable` per each blockchain adapter.
+// adapters: exports one class `Reader` per blockchain network,
+// Adapter for Symbol
 import * as Symbol from './src/adapters/Symbol';
 export { Symbol }
+
+// Adapter for dHealth
+export const dHealth = Symbol
 
 // export open standard namespace `Swapable`
 import * as Swapable from './src/Swapable'

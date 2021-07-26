@@ -1,10 +1,10 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
 import * as sinon from 'sinon'
 import {expect} from 'chai'
@@ -26,7 +26,6 @@ const context = new Context(
     new MosaicId('519FC24B9223E0B4'),
     'DummyNodePublicKey',
   ),
-  new Symbol.Signer(),
   new TransactionParameters(
     1573430400,
     Deadline.create(1573430400),
@@ -46,7 +45,6 @@ const contextWithArgs = new Context(
     new MosaicId('519FC24B9223E0B4'),
     'DummyNodePublicKey',
   ),
-  new Symbol.Signer(),
   new TransactionParameters(
     1573430400,
     Deadline.create(1573430400),

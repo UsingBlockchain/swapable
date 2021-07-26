@@ -1,16 +1,15 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
 import * as sinon from 'sinon'
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
 import { of } from 'rxjs'
-import { Network } from 'symbol-hd-wallets'
 import { AccountInfo } from 'symbol-sdk'
 
 // internal dependencies
@@ -28,7 +27,7 @@ import { getTestAccount, getTestAccountInfo, getTestMarket, Stubs } from '../moc
 const seedHash = 'ACECD90E7B248E012803228ADB4424F0D966D24149B72E58987D2BF2F2AF03C4'
 const market = getTestMarket()
 const target = getTestAccount('target')
-const defaultPoolTarget = 'TCS5GSPGMCTGTI46SSZIBZMRVTLM4BDQ7MRXAYI' // m/44'/4343'/0'/0'/0'
+const defaultPoolTarget = 'TB2IMFLYCQFZC6NZLWVQL26FZN6BNCNBZJP7WJQ'
 
 describe('contracts/DigitalMarket --->', () => {
   describe('constructor() should', () => {
@@ -38,13 +37,12 @@ describe('contracts/DigitalMarket --->', () => {
 
     it('use correct asset source', () => {
       expect(market.source.source).to.be.equal(seedHash)
-      expect(market.source.network).to.be.equal(Network.CATAPULT_PUBLIC)
     })
   })
 
   describe('identifier() should', () => {
     it('derive correct pool shares identifier', () => {
-      expect(market.identifier.id).to.be.equal('c2aa7f8d')
+      expect(market.identifier.id).to.be.equal('91a1d506')
       expect(market.identifier.target.address.plain()).to.be.equal(defaultPoolTarget)
     })
   })
@@ -59,12 +57,6 @@ describe('contracts/DigitalMarket --->', () => {
       const c = market.fakeGetContext(target)
       expect(c.reader).to.be.instanceof(Symbol.Reader)
       expect((c.reader as Symbol.Reader).generationHash).to.be.equal(seedHash)
-    })
-
-    it('use correct Signer implementation', () => {
-      const c = market.fakeGetContext(target)
-      expect(c.signer).to.be.instanceof(Symbol.Signer)
-      expect((c.signer as Symbol.Signer).keyChain.curve).to.be.equal(Network.CATAPULT_PUBLIC.curve)
     })
 
     it('permit overwrite of transaction parameters', () => {

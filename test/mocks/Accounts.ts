@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {
   Account,
   AccountInfo,
@@ -16,7 +15,6 @@ import {
   SupplementalPublicKeys,
   UInt64,
 } from 'symbol-sdk'
-import { MnemonicPassPhrase } from 'symbol-hd-wallets'
 
 type TestAccountType = {
   [name: string]: {
@@ -27,8 +25,8 @@ type TestAccountType = {
 
 const TEST_ACCOUNTS: TestAccountType = {
   "target": {
-    networkType: NetworkType.MIJIN_TEST,
-    // TCS5GSPGMCTGTI46SSZIBZMRVTLM4BDQ7MRXAYI
+    networkType: NetworkType.TEST_NET,
+    // TB2IMFLYCQFZC6NZLWVQL26FZN6BNCNBZJP7WJQ
     privateKey: '27002B109810E4C25E8E6AE964FAF129CC3BFD1A95CB99062E0205060041D0C9'},
   "operator1": {
     networkType: NetworkType.TEST_NET,
@@ -54,15 +52,6 @@ export const getTestAccount = (name: string): PublicAccount => {
 
   const spec = TEST_ACCOUNTS[name]
   return Account.createFromPrivateKey(spec.privateKey, spec.networkType).publicAccount
-}
-
-export const getTestMnemonic = () : MnemonicPassPhrase => {
-  return new MnemonicPassPhrase([
-    'torch', 'label', 'system', 'hungry', 'honey', 'endorse',
-    'knock', 'marine', 'orange', 'junk', 'major', 'double',
-    'early', 'runway', 'maximum', 'mother', 'shove', 'stamp',
-    'behave', 'already', 'entry', 'west', 'swear', 'fortune',
-  ].join(' '))
 }
 
 export const getTestAccountInfo = (name: string): AccountInfo => {

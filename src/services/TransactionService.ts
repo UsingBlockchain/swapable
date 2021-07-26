@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {EMPTY, Observable} from 'rxjs'
 import {concatMap, expand, map, mergeMap, toArray} from 'rxjs/operators'
 import {
@@ -42,7 +41,7 @@ export class TransactionService {
   /**
    * @description The low-level transaction service (Symbol SDK).
    */
-  private readonly transactionService: LibTransactionService;
+  private readonly transactionService: LibTransactionService
 
   /**
    * Constructor for TransactionService objects
@@ -95,12 +94,12 @@ export class TransactionService {
   public static getTransactionHash(
     transaction: Transaction,
   ): string | undefined {
-    const transactionInfo = transaction.transactionInfo;
-    let hash;
+    const transactionInfo = transaction.transactionInfo
+    let hash
     if (transactionInfo instanceof AggregateTransactionInfo) {
-      hash = transactionInfo.aggregateHash;
+      hash = transactionInfo.aggregateHash
     } else if (transactionInfo instanceof TransactionInfo) {
-      hash = transactionInfo.hash;
+      hash = transactionInfo.hash
     }
     return hash
   }
@@ -127,7 +126,7 @@ export class TransactionService {
       type: [
         TransactionType.TRANSFER,
         TransactionType.AGGREGATE_COMPLETE,
-        TransactionType.AGGREGATE_BONDED
+        TransactionType.AGGREGATE_BONDED,
       ],
       offset: lastTransactionId,
     }).pipe(
@@ -141,13 +140,13 @@ export class TransactionService {
             type: [
               TransactionType.TRANSFER,
               TransactionType.AGGREGATE_COMPLETE,
-              TransactionType.AGGREGATE_BONDED
+              TransactionType.AGGREGATE_BONDED,
             ],
             offset: lastTransactionId,
-          }).toPromise();
+          }).toPromise()
         }
 
-        return EMPTY;
+        return EMPTY
       }),
       concatMap((_) => _.data),
       toArray())
@@ -224,10 +223,10 @@ export class TransactionService {
     return this.chainRepository.getChainInfo().pipe(
       // Determine if the transactions have received enough confirmations.
       map((info: ChainInfo) => transactions.filter((transaction) => {
-        const currentHeight = info.height;
-        const transactionHeight = transaction.transactionInfo!.height;
+        const currentHeight = info.height
+        const transactionHeight = transaction.transactionInfo!.height
         return (currentHeight.subtract(transactionHeight)
-          .compare(UInt64.fromUint(requiredConfirmations)) >= 0);
+          .compare(UInt64.fromUint(requiredConfirmations)) >= 0)
       }))
     )
   }
@@ -245,7 +244,7 @@ export class TransactionService {
   ): Observable<Transaction[]> {
     const transactionHashes = transactions.map(
       ((transaction) => transaction.transactionInfo!.hash
-    )) as string[]
+      )) as string[]
     return this.transactionService.resolveAliases(transactionHashes)
   }
 
@@ -265,14 +264,14 @@ export class TransactionService {
   ): Transaction[] {
     const txes: TransferTransaction[] = []
     return txes.concat(transactions.map((transaction) => {
-        let flattenTransactions;
-        if (transaction instanceof AggregateTransaction) {
-            flattenTransactions = transaction.innerTransactions;
-        } else {
-            flattenTransactions = [transaction];
-        }
-        return TransactionService.filterTransferTransactions(flattenTransactions);
-    }).reduce((prev, it: TransferTransaction[]) => prev.concat(it), []));
+      let flattenTransactions
+      if (transaction instanceof AggregateTransaction) {
+        flattenTransactions = transaction.innerTransactions
+      } else {
+        flattenTransactions = [transaction]
+      }
+      return TransactionService.filterTransferTransactions(flattenTransactions)
+    }).reduce((prev, it: TransferTransaction[]) => prev.concat(it), []))
   }
 
   /**

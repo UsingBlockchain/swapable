@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {
   Convert,
   MosaicId,
@@ -97,7 +96,7 @@ export class AssetIdentifier {
 
     // 4 left-most bytes for the identifier
     const left4b: string = hash.slice(0, 4).reduce(
-      (s, b) => s + b.toString(16).padStart(2, '0'),
+      (s, b) => s + (b.toString(16).length === 2 ? b.toString(16) : `0${b.toString(16)}`),
       '', // initialValue
     )
 

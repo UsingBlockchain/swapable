@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {
   InnerTransaction,
   MosaicId,
@@ -39,7 +38,7 @@ import {
 } from '../../index'
 import { Executable } from './Executable'
 
-//XXX remove this, used only for type-discovery in command options below.
+// XXX remove this, used only for type-discovery in command options below.
 const Symbol_Testnet_SWP = new AssetIdentifier('00000001', new PublicAccount())
 const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
 
@@ -172,7 +171,7 @@ export class CreatePool extends Executable {
     const input_y = this.context.getInput('input_y', new AssetAmount(Symbol_Testnet_XYM, 10))
 
     // - The amount of shares sent is equal to sqrt(x * y) with 6 decimals
-    const shares = 1_000_000 * Math.sqrt(input_x.amount * input_y.amount);
+    const shares = 1_000_000 * Math.sqrt(input_x.amount * input_y.amount)
 
     // - Prepares the response
     const transactions: InnerTransaction[] = []
@@ -295,7 +294,7 @@ export class CreatePool extends Executable {
         new Mosaic(
           this.identifier.toMosaicId(),
           UInt64.fromUint(shares)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,
@@ -317,7 +316,7 @@ export class CreatePool extends Executable {
         new Mosaic(
           input_y.identifier.toMosaicId(),
           UInt64.fromUint(input_y.amount)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,

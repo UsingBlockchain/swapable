@@ -59,6 +59,8 @@ An automated liquidity pool is represented by the following properties:
 | Github | [https://github.com/sponsors/UsingBlockchain](https://github.com/sponsors/UsingBlockchain) |
 | :coffee: :coffee: :coffee: | [https://www.buymeacoffee.com/UBCDigital](https://www.buymeacoffee.com/UBCDigital) |
 
+This project is sponsored by [UBC Digital Magazine][mag-url].
+
 ## Disclaimer
 
   *The author of this package cannot be held responsible for any loss of money or any malintentioned usage forms of this package. Please use this package with caution.*
@@ -69,10 +71,11 @@ An automated liquidity pool is represented by the following properties:
 
 Copyright 2020-2021 [Using Blockchain Ltd][ref-ltd], Reg No.: 12658136, United Kingdom, All rights reserved.
 
-Licensed under the [AGPL v3 License](LICENSE).
+Licensed under the [LGPL v3.0](LICENSE)
 
 [ref-docs]: https://swapable.symbol.ninja/
 [ref-ltd]: https://using-blockchain.org
+[mag-url]: https://ubc.digital
 [npm-url]: https://www.npmjs.com/package/@ubcdigital/swapable
 [npm-badge]: https://img.shields.io/npm/v/@ubcdigital/swapable
 [size-badge]: https://img.shields.io/bundlephobia/min/@ubcdigital/swapable

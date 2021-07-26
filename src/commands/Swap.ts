@@ -1,12 +1,11 @@
 /**
- * This file is part of Swapable shared under AGPL-3.0
+ * This file is part of Swapable shared under LGPL-3.0-only.
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
  * @package     Swapable
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
- * @license     AGPL-3.0
+ * @license     LGPL-3.0-only
  */
-
 import {
   InnerTransaction,
   PublicAccount,
@@ -28,7 +27,7 @@ import {
 } from '../../index'
 import { Executable } from './Executable'
 
-//XXX remove this, used only for type-discovery in command options below.
+// XXX remove this, used only for type-discovery in command options below.
 const Symbol_Testnet_SWP = new AssetIdentifier('00000001', new PublicAccount())
 const Symbol_Testnet_XYM = new AssetIdentifier('00000002', new PublicAccount())
 
@@ -183,7 +182,7 @@ export class Swap extends Executable {
         new Mosaic(
           input_x.identifier.toMosaicId(),
           UInt64.fromUint(input_x.amount)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,
@@ -201,7 +200,7 @@ export class Swap extends Executable {
         new Mosaic(
           output.toMosaicId(),
           UInt64.fromUint(output_y)
-        )
+        ),
       ],
       EmptyMessage,
       reader.networkType,
