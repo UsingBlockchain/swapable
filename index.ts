@@ -21,6 +21,7 @@ export { AssetSource } from './src/models/AssetSource'
 export { AssetIdentifier } from './src/models/AssetIdentifier'
 export { CommandOption } from './src/models/CommandOption'
 export { TransactionParameters } from './src/models/TransactionParameters'
+export { PoolInfo } from './src/services/PoolService'
 
 // contracts
 export { Context } from './src/contracts/Context'

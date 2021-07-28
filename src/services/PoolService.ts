@@ -38,13 +38,13 @@ type KeyValueDictionary = {
 }
 
 /**
- * @type PoolImpl
+ * @type PoolInfo
  * @package Swapable
  * @subpackage Services
  * @since v1.2.1
  * @description Class that describes a specific pool implementation.
  */
-export type PoolImpl = {
+export type PoolInfo = {
   /**
    * The target public account that owns the liquidity pool's tradeable
    * token pairs and the liquidity provider share mosaics.
@@ -126,7 +126,7 @@ export class PoolService extends Service {
   public async getPools(
     authority: PublicAccount | Address,
     revision: number = 0
-  ): Promise<PoolImpl[]> {
+  ): Promise<PoolInfo[]> {
     const registryAddress = authority instanceof PublicAccount
       ? authority.address
       : authority as Address
@@ -165,7 +165,7 @@ export class PoolService extends Service {
       })
 
     // read metadata values to find X, Y and LP
-    const readMetadataObservables: Promise<PoolImpl>[] = [];
+    const readMetadataObservables: Promise<PoolInfo>[] = [];
     mosaics.map(m => readMetadataObservables.push(this.getInfo(
       m.owner,
       m.mosaicId,
@@ -182,12 +182,12 @@ export class PoolService extends Service {
    * @async
    * @access public
    * @param   {MosaicId}   lpSharesMosaic        The mosaic id of liquidity provider shares.
-   * @return  {PoolImpl}
+   * @return  {PoolInfo}
    */
   public async getInfo(
     targetAddress: Address,
     lpSharesMosaic: MosaicId,
-  ): Promise<PoolImpl> {
+  ): Promise<PoolInfo> {
 
     // read all metadata values from network
     const entries = await this.networkReader.factoryHttp
@@ -215,7 +215,7 @@ export class PoolService extends Service {
       pMosaic: lpSharesMosaic,
       xMosaic: new MosaicId(poolData['x_mosaic_id']),
       yMosaic: new MosaicId(poolData['y_mosaic_id']),
-    } as PoolImpl
+    } as PoolInfo
   }
 
   /**

@@ -34,7 +34,7 @@ import {
 import {
   Reader as ReaderImpl,
 } from './adapters/Symbol'
-import { PoolService, PoolImpl } from './services/PoolService'
+import { PoolService, PoolInfo } from './services/PoolService'
 
 /**
  * @type Swapable.CommandFn
@@ -151,7 +151,7 @@ export class Registry {
    */
   public async getPools(
     revision?: number,
-  ): Promise<PoolImpl[]> {
+  ): Promise<PoolInfo[]> {
     // initialize pool service
     const service = new PoolService(this.context)
 
