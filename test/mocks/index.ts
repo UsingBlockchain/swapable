@@ -10,6 +10,6 @@ export { getTestContext } from './Contexts'
 export { FakeCommand } from './Commands'
 export { getTestAccount, getTestAccountInfo } from './Accounts'
 export { getTestMosaicInfo } from './Mosaics'
-export { getTestMarket, FakeMarket } from './Markets'
+export { getTestMarket, getTestRegistry, FakeMarket } from './Markets'
 export { Stubs } from './Stubs'
 

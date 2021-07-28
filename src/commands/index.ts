@@ -10,6 +10,7 @@ import { CreatePool as CreatePoolImpl } from './CreatePool'
 import { AddLiquidity as AddLiquidityImpl } from './AddLiquidity'
 import { RemoveLiquidity as RemoveLiquidityImpl } from './RemoveLiquidity'
 import { Swap as SwapImpl } from './Swap'
+import { Publish as PublishImpl } from './Publish'
 
 /**
  * @namespace Swapable.PoolCommands
@@ -31,5 +32,8 @@ export namespace PoolCommands {
 
   // - Exports an alias to the `Swap` command implementation
   export class Swap extends SwapImpl {}
+
+  // - Exports an alias to the `Publish` command implementation
+  export class Publish extends PublishImpl {}
 
 }

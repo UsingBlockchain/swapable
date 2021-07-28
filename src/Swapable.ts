@@ -34,6 +34,7 @@ import {
 import {
   Reader as ReaderImpl,
 } from './adapters/Symbol'
+import { PoolService, PoolImpl } from './services/PoolService'
 
 /**
  * @type Swapable.CommandFn
@@ -68,26 +69,96 @@ export const AssetCommands: CommandsList = {
   'AddLiquidity': (c, i): Command => new CommandsImpl.AddLiquidity(c, i),
   'RemoveLiquidity': (c, i): Command => new CommandsImpl.RemoveLiquidity(c, i),
   'Swap': (c, i): Command => new CommandsImpl.Swap(c, i),
+  'Publish': (c, i): Command => new CommandsImpl.Publish(c, i),
 }
-
-/**
- * @var Swapable.PoolTargetDerivationPath
- * @package Swapable
- * @subpackage Standard
- * @since v1.0.0
- * @description Contains text that describes the derivation path for the
- *              target account of automated pools.
- */
-export const PoolTargetDerivationPath: string = 'm/4343\'/0\'/0\'/0\''
 
 /**
  * @var Swapable.Revision
  * @package Swapable
  * @subpackage Standard
  * @since v1.0.0
- * @description Object that describes the count of revisions for Swapable digital assets.
+ * @description Object that describes the version of Swapable liquidity pools.
+ *
+ * Revision 1: @ubcdigital/swapable@v1.0.0
+ * Revision 2: @ubcdigital/swapable@v1.2.0
  */
-export const Revision: number = 1
+export const Revision: number = 2
+
+/**
+ * @type Swapable.Registry
+ * @package standards
+ * @since v1.2.1
+ * @description Class that describes a registry for pools.
+ *
+ * Registries may list one or more than one liquidity pool(s).
+ * Each target account hosts one or more than one market pair.
+ *
+ * Registries do not own any cryptocurrency. They serve a role
+ * of public ledger that contains liquidity pools metadata.
+ */
+export class Registry {
+  /**
+   * The reader execution context
+   * 
+   * @var {Context}
+   */
+  public context: Context
+
+  /**
+   * Constructs a pool registry object.
+   *
+   * @param   {ReaderImpl}      reader
+   * @param   {PublicAccount}   publicAccount 
+   */
+  public constructor(
+    /**
+     * @readonly
+     * @access public
+     * @description The blockchain network reader configuration.
+     *
+     * Our first implementation uses a Symbol blockchain network
+     * adapter as ReaderImpl. It is possible that other networks
+     * are implemented in the future.
+     */
+    public readonly reader: ReaderImpl,
+
+    /**
+     * @readonly
+     * @access public
+     * @description The deterministic public account representing
+     * the registry. This account holds incoming transactions and
+     * is used for listing capacity.
+     */
+    public readonly publicAccount: PublicAccount
+  ) {
+    this.context = new Context(
+      Revision,
+      publicAccount,
+      this.reader,
+      new TransactionParameters(),
+      [],
+    )
+  }
+
+  /**
+   * List a registry's liquidity pools. Registries should be used
+   * for publicly listing liquidity pools. So-called market pairs
+   * are hosted by the Liquidity Pool target account.
+   *
+   * @static
+   * @param {Registry|PublicAccount} authority
+   * @return {MosaicId[]}
+   */
+  public async getPools(
+    revision?: number,
+  ): Promise<PoolImpl[]> {
+    // initialize pool service
+    const service = new PoolService(this.context)
+
+    // use service to read pools (mosaic+metadata)
+    return await service.getPools(this.publicAccount, !!revision ? revision : Revision)
+  }
+}
 
 /**
  * @class Swapable.AutomatedPool
@@ -133,13 +204,6 @@ export const Revision: number = 1
  * ```
  */
 export class AutomatedPool implements Market {
-
-  /**
-   * @description The deterministic public account which owns an
-   *              automated liquidity pool. This account is used
-   *              to issue the *automated pool shares* mosaic.
-   */
-  public target: PublicAccount
 
   /**
    * @description The source blockchain network of assets paired
@@ -207,11 +271,8 @@ export class AutomatedPool implements Market {
      * owner of the pool shares mosaic which is created for each
      * liquidity pool. This account *should* be multi-signature.
      */
-    target: PublicAccount,
+    public readonly target: PublicAccount,
   ) {
-    // - Only store the public account in instance
-    this.target = target
-
     // - Set asset source network configuration
     this.source = new AssetSource(this.reader.generationHash)
   }
@@ -306,6 +367,43 @@ export class AutomatedPool implements Market {
 
     // - Returns the LP Shares asset identifier
     return sharesAssetId
+  }
+
+  /**
+   * Publishes an Automated Liquidity Pool to \a registry and
+   * uses the target public account. Registries serve as list
+   * of liquidity pools.
+   *
+   * @param   {PublicAccount}   registry 
+   * @returns {Promise<TransactionURI<Transaction>>}
+   */
+  public async publish(
+    registry: PublicAccount,
+  ): Promise<TransactionURI<Transaction>> {
+    // - Reads network information from blockchain "reader"
+    await this.synchronize()
+
+    try {
+      // - Prepares command parameters
+      const argv = [
+        new CommandOption('registry', registry)
+      ]
+
+      // - Instanciates a command in a context
+      const context = this.getContext(this.target, new TransactionParameters(), argv)
+      const cmdFn = this.getCommand(this.identifier, 'Publish', context) as Executable
+
+      // - Populates the synchronized data
+      cmdFn.mosaicInfo = this.mosaicInfo
+      cmdFn.reserveInfo = this.reserveInfo
+
+      // - Executes the automated pool command
+      return cmdFn.execute(this.target, argv)
+    }
+    catch (f) {
+      // XXX error notifications / events
+      throw f
+    }
   }
 
   /**

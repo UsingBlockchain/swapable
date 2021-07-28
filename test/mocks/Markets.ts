@@ -57,3 +57,17 @@ export const getTestMarket = (): FakeMarket => {
     getTestAccount('target'),
   )
 }
+
+export const getTestRegistry = (): Swapable.Registry => {
+  return new Swapable.Registry(
+    new Symbol.Reader(
+      'http://api-01.us-west-1.symboldev.network:3000',
+      NetworkType.TEST_NET,
+      seedHash,
+      1573430400,
+      new MosaicId('519FC24B9223E0B4'),
+      'DummyNodePublicKey',
+    ),
+    getTestAccount('target'),
+  )
+}

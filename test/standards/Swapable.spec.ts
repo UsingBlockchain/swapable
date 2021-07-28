@@ -13,8 +13,8 @@ import { describe, it } from 'mocha'
 import { Swapable } from '../../index'
 
 describe('Swapable --->', () => {
-  it('Revision should be 1', () => {
-    expect(Swapable.Revision).to.be.equal(1)
+  it('Revision should be 2', () => {
+    expect(Swapable.Revision).to.be.equal(2)
   })
 
   describe('AssetCommands should', () => {
@@ -32,6 +32,10 @@ describe('Swapable --->', () => {
 
     it('export contract Swap', () => {
       expect('Swap' in Swapable.AssetCommands).to.be.true
+    })
+
+    it('export contract Publish', () => {
+      expect('Publish' in Swapable.AssetCommands).to.be.true
     })
   })
 })
