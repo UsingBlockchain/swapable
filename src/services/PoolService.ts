@@ -49,9 +49,9 @@ export type PoolInfo = {
    * The target public account that owns the liquidity pool's tradeable
    * token pairs and the liquidity provider share mosaics.
    *
-   * @var {Address}
+   * @var {PublicAccount}
    */
-  target: Address,
+  target: PublicAccount,
 
   /**
    * The provider mosaic refers to the liquidity provider share mosaics
@@ -189,6 +189,12 @@ export class PoolService extends Service {
     lpSharesMosaic: MosaicId,
   ): Promise<PoolInfo> {
 
+    // read account info
+    const targetInfo = await this.networkReader.factoryHttp
+      .createAccountRepository()
+      .getAccountInfo(targetAddress)
+      .toPromise()
+
     // read all metadata values from network
     const entries = await this.networkReader.factoryHttp
       .createMetadataRepository()
@@ -211,7 +217,7 @@ export class PoolService extends Service {
     // read details about this liquidity pool
     const poolData = this.interpretMetadata(mosaicMetadata);
     return {
-      target: targetAddress,
+      target: targetInfo.publicAccount,
       pMosaic: lpSharesMosaic,
       xMosaic: new MosaicId(poolData['x_mosaic_id']),
       yMosaic: new MosaicId(poolData['y_mosaic_id']),
